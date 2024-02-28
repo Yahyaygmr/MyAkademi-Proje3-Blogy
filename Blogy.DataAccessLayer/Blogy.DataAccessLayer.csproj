@@ -9,6 +9,13 @@
   <ItemGroup>
     <Folder Include="Abstaract\" />
     <Folder Include="Concrete\" />
+    <Folder Include="EntityFramework\" />
+    <Folder Include="UnitOfWork\" />
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blogy.EntityLayer\Blogy.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
