@@ -9,6 +9,10 @@
   <ItemGroup>
     <Folder Include="Abstaract\" />
     <Folder Include="Concrete\" />
+    <Folder Include="Container\" />
+    <Folder Include="ErrorMessage\" />
+    <Folder Include="Logging\" />
+    <Folder Include="ValidationRule\" />
   </ItemGroup>
 
   <ItemGroup>

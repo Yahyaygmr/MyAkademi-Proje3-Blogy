@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstaract\" />
     <Folder Include="Concrete\" />
-    <Folder Include="EntityFramework\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>
