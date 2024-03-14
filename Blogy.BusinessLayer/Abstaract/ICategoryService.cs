@@ -9,5 +9,6 @@ namespace Blogy.BusinessLayer.Abstaract
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        int TGetCategoryCount();
     }
 }
