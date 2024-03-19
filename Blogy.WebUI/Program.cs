@@ -3,10 +3,12 @@ using Blogy.BusinessLayer.Concrete;
 using Blogy.DataAccessLayer.Abstaract;
 using Blogy.DataAccessLayer.Context;
 using Blogy.DataAccessLayer.EntityFramework;
+using Blogy.EntityLayer.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogyContext>();
 
 builder.Services.AddDbContext<BlogyContext>();
 
