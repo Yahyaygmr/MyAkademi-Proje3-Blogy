@@ -1,4 +1,5 @@
-﻿using Blogy.EntityLayer.Concrete;
+﻿using Blogy.DataAccessLayer.DTO;
+using Blogy.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Blogy.BusinessLayer.Abstaract
     public interface ICategoryService : IGenericService<Category>
     {
         int TGetCategoryCount();
+        List<CategoryListWithArticleCountDto> TGetCategoryWithArticleCount();
     }
 }
