@@ -8,5 +8,9 @@ namespace Blogy.WebUI.Controllers
         {
             return View();
         }
+        public IActionResult BlogDetail()
+        {
+            return View();
+        }
     }
 }

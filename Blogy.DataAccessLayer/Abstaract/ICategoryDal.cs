@@ -10,5 +10,6 @@ namespace Blogy.DataAccessLayer.Abstaract
     public interface ICategoryDal : IGenericDal<Category>
     {
         int GetCategoryCount();
+        //List<CategoryListWithArticleCountDto> GetCategoryWithArticleCount();
     }
 }
