@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+
+@await Component.InvokeAsync("_BlogListHeadComponentPartial")
+<body>
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    @await Component.InvokeAsync("_BlogListNavBarComponentPartial")
+
+    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial")
+
+
+
+    <section class="section">
+        <div class="container">
+
+            <div class="row blog-entries element-animate">
+
+                <div class="col-md-12 col-lg-8 main-content">
+                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial")
+
+
+                </div>
+
+                <!-- END main-content -->
+
+                <div class="col-md-12 col-lg-4 sidebar">
+                    <div class="sidebar-box search-form-wrap">
+                        <form action="#" class="sidebar-search-form">
+                            <span class="bi-search"></span>
+                            <input type="text" class="form-control" id="s" placeholder="Aranacak Kelimeyi Giriniz...">
+                        </form>
+                    </div>
+                    <!-- END sidebar-box -->
+                    <div class="sidebar-box">
+                        @await Component.InvokeAsync("_BlogDetailByWriterInfoComponentPartial")
+                        
+               
+                    </div>
+                    <!-- END sidebar-box -->
+                    <div class="sidebar-box">
+                        @await Component.InvokeAsync("_BlogDetailGetOtherBlogPostsByWriterComponentPartial")
+                    </div>
+                    <!-- END sidebar-box -->
+
+                    <div class="sidebar-box">
+                        @await Component.InvokeAsync("_BlogDetailCategoryListComponentPartial")
+                    </div>
+                    <!-- END sidebar-box -->
+
+                    <div class="sidebar-box">
+                        @await Component.InvokeAsync("_BlogDetailTagsComponentDetail")
+                    </div>
+                </div>
+                <!-- END sidebar -->
+
+            </div>
+        </div>
+    </section>
+    <!-- Start posts-entry -->
+    @await Component.InvokeAsync("_BlogDetailOtherPostsComponentPartial")
+    <!-- End posts-entry -->
+    @await Component.InvokeAsync("_BlogListFooterComponentPartial")
+
+    @await Component.InvokeAsync("_BlogListScriptsComponentPartial")
+
+</body>
