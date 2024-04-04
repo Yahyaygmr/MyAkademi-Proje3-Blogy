@@ -33,6 +33,11 @@ namespace Blogy.BusinessLayer.Concrete
             return _writerDal.GetListAll();
         }
 
+        public Writer TGetWriterByArticle(int id)
+        {
+            return _writerDal.GetWriterByArticle(id);
+        }
+
         public void TInsert(Writer entity)
         {
             _writerDal.Insert(entity);

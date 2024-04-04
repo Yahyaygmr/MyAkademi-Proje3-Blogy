@@ -18,7 +18,7 @@
 
     @await Component.InvokeAsync("_BlogListNavBarComponentPartial")
 
-    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial")
+    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial", new { id = ViewBag.blogId })
 
 
 
@@ -28,8 +28,8 @@
             <div class="row blog-entries element-animate">
 
                 <div class="col-md-12 col-lg-8 main-content">
-                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial")
-                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial", new { id = ViewBag.blogId })
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial", new { id = ViewBag.blogId })
 
 
                 </div>
@@ -45,7 +45,7 @@
                     </div>
                     <!-- END sidebar-box -->
                     <div class="sidebar-box">
-                        @await Component.InvokeAsync("_BlogDetailByWriterInfoComponentPartial")
+                        @await Component.InvokeAsync("_BlogDetailByWriterInfoComponentPartial", new { id = ViewBag.blogId })
                         
                
                     </div>

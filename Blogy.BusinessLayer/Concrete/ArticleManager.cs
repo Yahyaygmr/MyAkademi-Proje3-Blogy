@@ -18,6 +18,11 @@ namespace Blogy.BusinessLayer.Concrete
             _articleDal = articleDal;
         }
 
+        public Writer TGetWriterInfoByArticleWriter(int id)
+        {
+            return _articleDal.GetWriterInfoByArticleWriter(id);
+        }
+
         public void TDelete(int id)
         {
             if (id != 0)

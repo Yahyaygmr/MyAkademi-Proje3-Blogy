@@ -12,8 +12,15 @@ namespace Blogy.DataAccessLayer.EntityFramework
 {
     public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
+        private readonly BlogyContext _context;
         public EfCommentDal(BlogyContext context) : base(context)
         {
+            _context = context;
+        }
+        public List<Comment> GetCommentsByArticleId(int id)
+        {
+            var values = _context.Comments.Where(x => x.ArticleId == id).ToList();
+            return values;
         }
     }
 }

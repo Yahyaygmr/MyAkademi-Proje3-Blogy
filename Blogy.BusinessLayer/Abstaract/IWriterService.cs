@@ -9,5 +9,6 @@ namespace Blogy.BusinessLayer.Abstaract
 {
     public interface IWriterService : IGenericService<Writer>
     {
+        Writer TGetWriterByArticle(int id);
     }
 }
