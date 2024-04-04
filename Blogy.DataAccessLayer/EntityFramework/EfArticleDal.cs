@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Blogy.DataAccessLayer.EntityFramework
 {
-	public class EfArticleDal : GenericRepository<Article>, IArticleDal
+    public class EfArticleDal : GenericRepository<Article>, IArticleDal
 	{
 		private readonly BlogyContext _context;
 		public EfArticleDal(BlogyContext context) : base(context)
@@ -25,5 +25,10 @@ namespace Blogy.DataAccessLayer.EntityFramework
 				.Include(x => x.Writer)
 				.ToList();
 		}
-	}
+
+        public Writer GetWriterInfoByArticleWriter(int id)
+        {
+			return _context.Articles.Where(x => x.ArticleId == id).Select(y => y.Writer).FirstOrDefault();
+        }
+    }
 }

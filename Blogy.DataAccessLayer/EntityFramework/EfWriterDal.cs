@@ -12,8 +12,16 @@ namespace Blogy.DataAccessLayer.EntityFramework
 {
     public class EfWriterDal : GenericRepository<Writer>, IWriterDal
     {
+        private readonly BlogyContext _context;
         public EfWriterDal(BlogyContext context) : base(context)
         {
+            _context = context;
+        }
+
+        public Writer GetWriterByArticle(int articleId)
+        {
+            Writer writer = _context.Articles.Find(articleId).Writer;
+            return writer;
         }
     }
 }

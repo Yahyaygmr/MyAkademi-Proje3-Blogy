@@ -9,5 +9,6 @@ namespace Blogy.BusinessLayer.Abstaract
 {
     public interface ICommentService : IGenericService<Comment>
     {
+        List<Comment> TGetCommentsByArticleId(int id);
     }
 }
