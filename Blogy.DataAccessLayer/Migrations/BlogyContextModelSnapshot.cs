@@ -146,6 +146,9 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleId"), 1L, 1);
 
+                    b.Property<int?>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -168,11 +171,13 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     b.HasKey("ArticleId");
 
+                    b.HasIndex("AppUserId");
+
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("WriterId");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Category", b =>
@@ -189,7 +194,7 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Comment", b =>
@@ -225,7 +230,7 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Tag", b =>
@@ -242,7 +247,7 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     b.HasKey("TagId");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Writer", b =>
@@ -267,7 +272,7 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     b.HasKey("WriterId");
 
-                    b.ToTable("Writers");
+                    b.ToTable("Writers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -375,6 +380,10 @@ namespace Blogy.DataAccessLayer.Migrations
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>
                 {
+                    b.HasOne("Blogy.EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Articles")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("Blogy.EntityLayer.Concrete.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
@@ -386,6 +395,8 @@ namespace Blogy.DataAccessLayer.Migrations
                         .HasForeignKey("WriterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Category");
 
@@ -452,6 +463,11 @@ namespace Blogy.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Blogy.EntityLayer.Concrete.AppUser", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>

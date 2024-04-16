@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,7 @@ namespace Blogy.EntityLayer.Concrete
         public int WriterId { get; set; }
         public Writer Writer { get; set; }
         public List<Comment> Comments { get; set; }
+        public int? AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
