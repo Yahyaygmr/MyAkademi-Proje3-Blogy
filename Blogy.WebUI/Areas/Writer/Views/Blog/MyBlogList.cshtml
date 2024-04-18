@@ -1,8 +1,66 @@
-﻿
+﻿@model List<Article>
 @{
     ViewData["Title"] = "MyBlogListAsync";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
 }
 
-<h1>MyBlogListAsync</h1>
+<div class="content-wrapper">
+    <div class="page-header">
+      @*   <h3 class="page-title">@ViewBag.id Blogları</h3> *@
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Basic tables </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span style="color:cornflowerblue">HOŞGELDİNİZ </span>  <span style="text-decoration:underline; font-size:22px;"> @ViewBag.id</span></h4>
+                    <p class="card-description">
+                       Aşşağıdaki tablodan size ait olan blogları görüntüleyebilir, üzerlerinde işlemler yapabilirsiniz.
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Blog Başlığı</th>
+                                    <th>Tarih</th>
+                                    <th>Kategori</th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                    <th>Blog Yorumları</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ArticleId</td>
+                                        <td>@item.Title</td>
+                                        <td>@item.CreatedDate</td>
+                                        <td>@item.CategoryId</td>
+                                        <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-danger">Sil</a></td>
+                                        <td><a href="#" class="btn btn-info">Güncelle</a></td>
+                                        <td><a href="#" class="btn btn-warning">Blog Yorumları</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+         
+                    </div>
+                    
+                </div>
+                <span class="m-5"> <a href="/Writer/Blog/CreateBlog/" class="btn btn-primary">Yeni Blog Girişi</a></span>
+                   
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 

@@ -12,23 +12,29 @@ using System.Threading.Tasks;
 namespace Blogy.DataAccessLayer.EntityFramework
 {
     public class EfArticleDal : GenericRepository<Article>, IArticleDal
-	{
-		private readonly BlogyContext _context;
-		public EfArticleDal(BlogyContext context) : base(context)
-		{
-			_context = context;
-		}
+    {
+        private readonly BlogyContext _context;
+        public EfArticleDal(BlogyContext context) : base(context)
+        {
+            _context = context;
+        }
 
-		public List<Article> GetArticleWithWriter()
-		{
-			return _context.Articles
-				.Include(x => x.Writer)
-				.ToList();
-		}
+        public List<Article> GetArticlesByArticleByWriter(int id)
+        {
+            var values = _context.Articles.Where(x => x.AppUserId == id).ToList();
+            return values;
+        }
+
+        public List<Article> GetArticleWithWriter()
+        {
+            return _context.Articles
+                .Include(x => x.Writer)
+                .ToList();
+        }
 
         public Writer GetWriterInfoByArticleWriter(int id)
         {
-			return _context.Articles.Where(x => x.ArticleId == id).Select(y => y.Writer).FirstOrDefault();
+            return _context.Articles.Where(x => x.ArticleId == id).Select(y => y.Writer).FirstOrDefault();
         }
     }
 }
