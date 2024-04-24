@@ -21,11 +21,11 @@
 
 
 							<h2><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h2>
-							@* <div class="post-meta align-items-center text-left clearfix">
-								<figure class="author-figure mb-0 me-3 float-start"><img src="@item.Writer.ImageUrl" alt="Image" class="img-fluid"></figure>
-								<span class="d-inline-block mt-1">Yazar <a href="#">@item.Writer.Name</a></span>
+							<div class="post-meta align-items-center text-left clearfix">
+								<figure class="author-figure mb-0 me-3 float-start"><img src="@item.AppUser.ImageUrl" alt="Image" class="img-fluid"></figure>
+								<span class="d-inline-block mt-1">Yazar <a href="#">@item.AppUser.Name @item.AppUser.Surname</a></span>
 								<span>&nbsp;-&nbsp; @item.CreatedDate.ToShortDateString()</span>
-							</div> *@
+							</div>
 
 							<p>@item.Description.Substring(0,183) ...</p>
 							<p><a href="#" class="read-more">Devamını Oku</a></p>

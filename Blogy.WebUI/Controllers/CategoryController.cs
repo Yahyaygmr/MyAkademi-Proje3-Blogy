@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.Controllers
 {
+    [Area("Admin")]
+    [Route("Admin/{controller}/{action}/{id?}")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

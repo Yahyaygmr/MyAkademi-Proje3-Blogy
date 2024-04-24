@@ -1,10 +1,12 @@
 ﻿using Blogy.EntityLayer.Concrete;
 using Blogy.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -26,7 +28,7 @@ namespace Blogy.WebUI.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("MyBlogList", "Blog", new { area = "Writer" });
                 }
                 else
                 {
@@ -38,6 +40,12 @@ namespace Blogy.WebUI.Controllers
                 ModelState.AddModelError("", "Lütfen zorunlu alanları boş geçmeyin.");
             }
             return View();
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }

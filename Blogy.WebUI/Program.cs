@@ -5,6 +5,8 @@ using Blogy.DataAccessLayer.Context;
 using Blogy.DataAccessLayer.EntityFramework;
 using Blogy.EntityLayer.Concrete;
 using Blogy.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<BlogyContext>()
     .AddErrorDescriber<CustomIdentityValidator>();
+
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
+
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.LoginPath = "/Login/Index/";
+    opt.AccessDeniedPath = "/Login/Index/";
+});
 
 builder.Services.AddDbContext<BlogyContext>();
 

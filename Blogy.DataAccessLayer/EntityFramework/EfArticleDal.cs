@@ -21,13 +21,27 @@ namespace Blogy.DataAccessLayer.EntityFramework
 
         public List<Article> GetArticlesByArticleByWriter(int id)
         {
-            var values = _context.Articles.Where(x => x.AppUserId == id).ToList();
+            var values = _context.Articles
+                .Where(x => x.AppUserId == id)
+                .OrderByDescending(x => x.ArticleId)
+                .ToList();
             return values;
         }
 
         public List<Article> GetArticleWithWriter()
         {
-            throw new NotImplementedException();
+            return _context.Articles
+                 .Include(x => x.AppUser)
+                 .OrderByDescending(x=>x.ArticleId)
+                 .ToList();
         }
-    }
+
+		public AppUser GetWriterInfoByArticleWriter(int id)
+		{
+			return _context.Articles
+                .Where(x => x.ArticleId == id)
+                .Select(y => y.AppUser)
+                .FirstOrDefault();
+		}
+	}
 }
