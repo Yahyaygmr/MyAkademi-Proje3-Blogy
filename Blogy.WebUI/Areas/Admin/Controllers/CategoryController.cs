@@ -2,7 +2,7 @@
 using Blogy.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Blogy.WebUI.Controllers
+namespace Blogy.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/{controller}/{action}/{id?}")]
@@ -14,7 +14,10 @@ namespace Blogy.WebUI.Controllers
         {
             _categoryService = categoryService;
         }
-
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult CategoryList()
         {
             var values = _categoryService.TGetListAll();

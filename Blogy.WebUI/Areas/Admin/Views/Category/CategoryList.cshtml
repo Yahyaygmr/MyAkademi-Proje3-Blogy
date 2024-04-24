@@ -1,9 +1,9 @@
 ﻿@using Blogy.EntityLayer.Concrete
 @model List<Category>
 @{
-    Layout = null;
+    ViewData["Title"] = "Kategori Listesi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 <div class="container">
     <h1>CategoryList</h1>
     <hr />
@@ -21,13 +21,13 @@
             <tr>
                 <td>@item.CategoryId</td>
                 <td>@item.Name</td>
-                <td><a href="/Category/RemoveCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-info">Güncelle</a></td>
+                <td><a href="/Admin/Category/RemoveCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-info">Güncelle</a></td>
                 <td><a href="#" class="btn btn-secondary">Bloglar</a></td>
             </tr>
         }
     </table>
-    <a href="/Category/CreateCategory/" class="btn btn-outline-success">+ Yeni Kategori</a>
+    <a href="/Admin/Category/CreateCategory/" class="btn btn-outline-success">+ Yeni Kategori</a>
 </div>
 
 
