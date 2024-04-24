@@ -49,7 +49,6 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
             var user = await _userManager.FindByNameAsync(User?.Identity?.Name);
 
             article.AppUserId = user.Id;
-            article.WriterId = 1;
             article.CreatedDate = DateTime.Now;
 
             _articleService.TInsert(article);

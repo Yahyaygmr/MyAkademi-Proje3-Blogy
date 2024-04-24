@@ -17,10 +17,9 @@ namespace Blogy.EntityLayer.Concrete
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public int WriterId { get; set; }
-        public Writer Writer { get; set; }
-        public List<Comment> Comments { get; set; }
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }

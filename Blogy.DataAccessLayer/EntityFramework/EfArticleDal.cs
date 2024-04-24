@@ -27,14 +27,7 @@ namespace Blogy.DataAccessLayer.EntityFramework
 
         public List<Article> GetArticleWithWriter()
         {
-            return _context.Articles
-                .Include(x => x.Writer)
-                .ToList();
-        }
-
-        public Writer GetWriterInfoByArticleWriter(int id)
-        {
-            return _context.Articles.Where(x => x.ArticleId == id).Select(y => y.Writer).FirstOrDefault();
+            throw new NotImplementedException();
         }
     }
 }

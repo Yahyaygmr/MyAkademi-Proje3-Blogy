@@ -27,9 +27,6 @@ builder.Services.AddScoped<ICommentService, CommentManager>();
 builder.Services.AddScoped<ITagDal, EfTagDal>();
 builder.Services.AddScoped<ITagService, TagManager>();
 
-builder.Services.AddScoped<IWriterDal, EfWriterDal>();
-builder.Services.AddScoped<IWriterService, WriterManager>();
-
 
 
 builder.Services.AddControllersWithViews();
@@ -53,7 +50,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Blog}/{action=BlogList}/{id?}");
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
