@@ -18,6 +18,10 @@ namespace Blogy.DataAccessLayer.Context
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<ContactUs> ContactUses { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }
