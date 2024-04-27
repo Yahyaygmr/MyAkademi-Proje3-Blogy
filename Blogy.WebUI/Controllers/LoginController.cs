@@ -10,12 +10,14 @@ namespace Blogy.WebUI.Controllers
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public LoginController(SignInManager<AppUser> signInManager)
-        {
-            _signInManager = signInManager;
-        }
-        [HttpGet]
+		public LoginController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+		{
+			_signInManager = signInManager;
+			_userManager = userManager;
+		}
+		[HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -28,6 +30,15 @@ namespace Blogy.WebUI.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, true);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByNameAsync(model.UserName);
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    foreach (var role in userRoles)
+                    {
+                        if (role == "Admin")
+                        {
+							return RedirectToAction("Index", "Roles", new { area = "Admin" });
+						}
+                    }
                     return RedirectToAction("MyBlogList", "Blog", new { area = "Writer" });
                 }
                 else
