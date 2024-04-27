@@ -1,8 +1,83 @@
 ﻿@model Blogy.WebUI.Models.CreateResgisterViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Yazar Girişi";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
+<div class="hero overlay inner-page bg-primary py-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center pt-5">
+            <div class="col-lg-6">
+                <h1 class="heading text-white mb-3" data-aos="fade-up">Yazar Olmak İçin Kaydolun</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 mb-5 mb-lg-0  bg-primary" data-aos="fade-up" data-aos-delay="100">
+                <div class="row pt-5">
+                    <div class="col-lg-12">
+                        <div class="align-items-center justify-content-center text-center ">
+                            <h1 class="heading text-white mb-3 " data-aos="fade-up">Blogy</h1>
+                        </div>
+                        
+                        <ol class="text-white">
+                            <li>Lütfen kayıt esnasında bilgilerinizi doğru girdiğinizden emin olun.</li>
+                            <li>Sizin Hakkınızda kısmında mutlaka kendinizi kısaca tanıtın.</li>
+                            <li>Kayıt işlemi sonrasında yönetici tarafından üyeliğiniz 12 saat içerisinde onaylanacaktır.</li>
+                            <li>Üyeliğiniz onaylandıktan sonra blog oluşturabilirsiniz.</li>
+                            <li>Yaşamış olduğunuz teknik bir sorun yada merak ettikleriniz için iletişim alanından bize yazabilirsiniz.</li>
+                            <li>Paylaşımlarınızı heyacanla bekliyoruz :)</li>
+                        </ol>
+                    </div>
+                </div>
+			</div>
+			<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+				<form method="post">
+					<div class="row">
+                        <div asp-validation-summary="All"></div>
+						<div class="col-6 mb-3">
+							<input type="text" class="form-control" asp-for="Name" placeholder="Adınız">
+						</div>
+						<div class="col-6 mb-3">
+							<input type="text" class="form-control" asp-for="Surname" placeholder="Soaydınız">
+						</div>
+                        <div class="col-6 mb-3">
+                            <input type="email" class="form-control" asp-for="Email" placeholder="Mail Adresiniz">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <input type="text" class="form-control" asp-for="UserName" placeholder="Giriş İçin Kullanıcı Adınız">
+                        </div>
+						<div class="col-12 mb-3">
+                            <textarea  id="" cols="30" rows="7" class="form-control" asp-for="Description" placeholder="Sizin Hakkınızda"></textarea>
+						</div>
+                        <div class="col-6 mb-3">
+                            <input type="password" class="form-control" asp-for="Password" placeholder="Şifre">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Şifre Tekrar">
+                        </div>
+
+						<div class="col-12">
+                            <button class="btn btn-primary">Başvurunu Tamamla</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+@* 
 <!DOCTYPE html>
 
 <html>
@@ -35,4 +110,4 @@
 
     </div>
 </body>
-</html>
+</html> *@

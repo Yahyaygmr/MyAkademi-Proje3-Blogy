@@ -10,8 +10,10 @@ namespace Blogy.BusinessLayer.Abstaract
     public interface IArticleService : IGenericService<Article>
     {
         List<Article> TGetArticleWithWriter();
+        List<Article> TGetArticleWithWriterAndCategory();
         AppUser TGetWriterInfoByArticleWriter(int id);
         List<Article> TGetArticlesByArticleByWriter(int id);
+        List<Article> TGetLastNArticle(int count);
 
 
     }

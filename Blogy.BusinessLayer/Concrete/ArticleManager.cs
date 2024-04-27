@@ -70,5 +70,15 @@ namespace Blogy.BusinessLayer.Concrete
         {
             return _articleDal.GetArticlesByArticleByWriter(id);
         }
+
+        public List<Article> TGetLastNArticle(int count)
+        {
+            return _articleDal.GetLastNArticle(count);
+        }
+
+        public List<Article> TGetArticleWithWriterAndCategory()
+        {
+            return _articleDal.GetArticleWithWriterAndCategory();
+        }
     }
 }

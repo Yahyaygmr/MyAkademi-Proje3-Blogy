@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> Basic tables </li>
+                <li class="breadcrumb-item active" aria-current="page"> Blog Listesi </li>
             </ol>
         </nav>
     </div>
@@ -44,8 +44,8 @@
                                         <td>@item.CreatedDate</td>
                                         <td>@item.CategoryId</td>
                                         <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-danger">Sil</a></td>
-                                        <td><a href="#" class="btn btn-info">Güncelle</a></td>
-                                        <td><a href="#" class="btn btn-warning">Blog Yorumları</a></td>
+                                        <td><a href="/Writer/Blog/UpdateBlog/@item.ArticleId" class="btn btn-info">Güncelle</a></td>
+                                        <td><a href="/Writer/Blog//@item.ArticleId" class="btn btn-warning">Blog Yorumları</a></td>
                                     </tr>
                                 }
                             </tbody>

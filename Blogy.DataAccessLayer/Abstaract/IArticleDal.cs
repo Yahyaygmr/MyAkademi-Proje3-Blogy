@@ -10,6 +10,8 @@ namespace Blogy.DataAccessLayer.Abstaract
     public interface IArticleDal : IGenericDal<Article>
     {
         List<Article> GetArticleWithWriter();
+        List<Article> GetArticleWithWriterAndCategory();
+        List<Article> GetLastNArticle(int count);
         AppUser GetWriterInfoByArticleWriter(int id);
         List<Article> GetArticlesByArticleByWriter(int id);
     }

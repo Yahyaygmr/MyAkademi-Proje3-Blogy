@@ -1,7 +1,7 @@
 ﻿@model Article
 <div class="post-content-body">
-    <p>@Model.Description</p>
-    <div class="row my-4">
+    <p>@Html.Raw(Model.Description)</p>
+  @*   <div class="row my-4">
         <div class="col-md-12 mb-4">
             <img src="~/blogy101/images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded">
         </div>
@@ -11,5 +11,5 @@
         <div class="col-md-6 mb-4">
             <img src="~/blogy101/images/img_3_horizontal.jpg" alt="Image placeholder" class="img-fluid rounded">
         </div>
-    </div>
+    </div> *@
 </div>

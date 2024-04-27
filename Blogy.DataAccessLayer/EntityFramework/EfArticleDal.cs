@@ -36,7 +36,24 @@ namespace Blogy.DataAccessLayer.EntityFramework
                  .ToList();
         }
 
-		public AppUser GetWriterInfoByArticleWriter(int id)
+        public List<Article> GetArticleWithWriterAndCategory()
+        {
+            return _context.Articles
+                .Include(x => x.AppUser)
+                .Include(x => x.Category)
+                .ToList();
+        }
+
+        public List<Article> GetLastNArticle(int count)
+        {
+            var values = _context.Articles
+               .OrderByDescending(x => x.ArticleId)
+               .Take(count)
+               .ToList();
+            return values;
+        }
+
+        public AppUser GetWriterInfoByArticleWriter(int id)
 		{
 			return _context.Articles
                 .Where(x => x.ArticleId == id)

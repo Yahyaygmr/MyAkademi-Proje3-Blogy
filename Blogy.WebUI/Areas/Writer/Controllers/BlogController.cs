@@ -1,5 +1,7 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
+using Blogy.BusinessLayer.ValidationRules.ArticleValidation;
 using Blogy.EntityLayer.Concrete;
+using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -36,31 +38,71 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
         [HttpGet]
         public IActionResult CreateBlog()
         {
+            
+            ViewBag.categories = GetCategories();
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateBlog(Article article)
+        {
+
+            var validator = new CreateArticleValidator();
+            var validationResult = validator.Validate(article);
+            if (validationResult.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(User?.Identity?.Name);
+
+                article.AppUserId = user.Id;
+                article.CreatedDate = DateTime.Now;
+
+                _articleService.TInsert(article);
+
+                return RedirectToAction("MyBlogList");
+            }
+            ViewBag.categories = GetCategories();
+            return View();
+               
+        }
+        public IActionResult DeleteBlog(int id)
+        {
+            _articleService.TDelete(id);
+            return RedirectToAction("MyBlogList");
+        }
+        [HttpGet]
+        public IActionResult UpdateBlog(int id)
+        {
+            var blog = _articleService.TGetById(id);
+            ViewBag.categories = GetCategories();
+
+            return View(blog);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateBlog(Article article)
+        {
+            var validator = new UpdateArticleValidator();
+            var validationResult = validator.Validate(article);
+            if (validationResult.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(User?.Identity?.Name);
+
+                article.AppUserId = user.Id;
+                article.CreatedDate = DateTime.Now;
+
+                _articleService.TUpdate(article);
+                return RedirectToAction("MyBlogList");
+            }
+            ViewBag.categories = GetCategories();
+            return View();
+        }
+        internal List<SelectListItem> GetCategories()
+        {
             List<SelectListItem> categories = (from x in _categoryService.TGetListAll()
                                                select new SelectListItem
                                                {
                                                    Text = x.Name,
                                                    Value = x.CategoryId.ToString()
                                                }).ToList();
-            ViewBag.categories = categories;
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateBlog(Article article)
-        {
-            var user = await _userManager.FindByNameAsync(User?.Identity?.Name);
-
-            article.AppUserId = user.Id;
-            article.CreatedDate = DateTime.Now;
-
-            _articleService.TInsert(article);
-
-            return RedirectToAction("MyBlogList");
-        }
-        public IActionResult DeleteBlog(int id)
-        {
-            _articleService.TDelete(id);
-            return RedirectToAction("MyBlogList");
+            return categories;
         }
     }
 }

@@ -1,30 +1,43 @@
 ﻿@model Blogy.WebUI.Models.UserSignInViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Yazar Girişi";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Giriş Yap</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container m-5">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly"></div>
-            <br />
-            <label>Kullanıcı Adınız</label>
-            <input type="text" class="form-control" asp-for="UserName" />
-            <br />
-            <label>Şifre</label>
-            <input type="text" class="form-control" asp-for="Password" />
-            <br />
-            <button class="btn btn-info">Giriş Yap</button>
-        </form>
-
+<div class="hero overlay inner-page bg-primary py-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center pt-5">
+            <div class="col-lg-6">
+                <h1 class="heading text-white mb-3" data-aos="fade-up">Yazar Girişi</h1>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-3" data-aos="fade-up" data-aos-delay="200">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="row">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="password" class="form-control" asp-for="Password" placeholder="Şifre">
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-primary">Giriş Yap</button>
+                        </div>
+                        <div class="col-8">
+                            <p style="color:black">Hesabın Yok Mu?</p>
+                            <p> Yazar Olmak İçin <a href="/Register/Index/"> --> Başvuru Yap</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

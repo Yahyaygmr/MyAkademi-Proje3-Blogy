@@ -26,28 +26,33 @@ namespace Blogy.WebUI.Controllers
         {
             if (model.Password == null)
             {
-                ModelState.AddModelError("","Şifre Alanı Boş Olamaz");
+                ModelState.AddModelError("", "Şifre Alanı Boş Olamaz");
                 return View(model);
             }
-            AppUser appUser = new AppUser()
+            if (ModelState.IsValid)
             {
-                Name = model.Name,
-                Email = model.Email,
-                Surname = model.Surname,
-                UserName = model.UserName,
-            };
-            var result = await _userManager.CreateAsync(appUser, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            else
-            {
-                foreach (var item in result.Errors)
+                AppUser appUser = new AppUser()
                 {
-                    ModelState.AddModelError("", item.Description);
+                    Name = model.Name,
+                    Email = model.Email,
+                    Surname = model.Surname,
+                    UserName = model.UserName,
+                    Description = model.Description,
+                };
+                var result = await _userManager.CreateAsync(appUser, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
                 }
             }
+
             return View();
         }
     }

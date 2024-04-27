@@ -1,10 +1,13 @@
 using Blogy.BusinessLayer.Abstaract;
 using Blogy.BusinessLayer.Concrete;
+using Blogy.BusinessLayer.ValidationRules.ArticleValidation;
 using Blogy.DataAccessLayer.Abstaract;
 using Blogy.DataAccessLayer.Context;
 using Blogy.DataAccessLayer.EntityFramework;
 using Blogy.EntityLayer.Concrete;
 using Blogy.WebUI.Models;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
@@ -22,6 +25,12 @@ builder.Services.AddMvc(config =>
     .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
 });
+builder.Services.AddFluentValidationAutoValidation(config =>
+{
+    config.DisableDataAnnotationsValidation = false;
+});
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateArticleValidator>();
 
 builder.Services.ConfigureApplicationCookie(opt =>
 {
