@@ -26,7 +26,7 @@ builder.Services.AddMvc(config =>
 builder.Services.ConfigureApplicationCookie(opt =>
 {
     opt.LoginPath = "/Login/Index/";
-    opt.AccessDeniedPath = "/Login/Index/";
+    opt.AccessDeniedPath = "/ErrorPage/Page403/";
 });
 
 builder.Services.AddDbContext<BlogyContext>();
@@ -59,6 +59,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseStatusCodePagesWithRedirects("/ErrorPage/Page404/");
 
 app.UseRouting();
 app.UseAuthentication();

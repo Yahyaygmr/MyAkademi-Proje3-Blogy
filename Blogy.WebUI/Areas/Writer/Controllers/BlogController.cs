@@ -1,11 +1,13 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Blogy.WebUI.Areas.Writer.Controllers
 {
+    [Authorize(Roles = "Writer")]
     [Area("Writer")]
     [Route("Writer/{controller}/{action}/{id?}")]
     public class BlogController : Controller

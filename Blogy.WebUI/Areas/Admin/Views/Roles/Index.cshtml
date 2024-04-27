@@ -25,12 +25,11 @@
                     {
                         <tr>
                             <td>@item.RoleName</td>
-                            <td> <a href="#" class="btn btn-outline-danger">Sil</a></td>
-                            <td> <a href="#" class="btn btn-outline-warning">Güncelle</a></td>
-                            <td> <a href="#" class="btn btn-outline-primary">Kullanıcıya Ata</a></td>
+                            <td> <a href="/Admin/Roles/DeleteRole/@item.RoleId" class="btn btn-outline-danger">Sil</a></td>
+                            <td> <a href="/Admin/Roles/UpdateRole/@item.RoleId" class="btn btn-outline-warning">Güncelle</a></td>
+                            <td> <a href="/Admin/Roles/UserList" class="btn btn-outline-primary">Kullanıcıya Ata</a></td>
                         </tr>
                     }
-                  
                 </tbody>
             </table>
         </div>

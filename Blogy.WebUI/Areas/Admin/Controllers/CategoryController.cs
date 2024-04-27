@@ -1,9 +1,11 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/{controller}/{action}/{id?}")]
     public class CategoryController : Controller
