@@ -19,7 +19,7 @@ namespace Blogy.DataAccessLayer.EntityFramework
         }
         public List<Comment> GetCommentsByArticleId(int id)
         {
-            var values = _context.Comments.Where(x => x.ArticleId == id).ToList();
+            var values = _context.Comments.Where(x => x.ArticleId == id && x.Status == true).ToList();
             return values;
         }
     }

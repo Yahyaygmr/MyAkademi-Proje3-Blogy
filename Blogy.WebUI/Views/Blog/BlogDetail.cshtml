@@ -14,9 +14,11 @@
 
             <div class="col-md-12 col-lg-8 main-content">
                 @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial", new { id = ViewBag.blogId })
-                @await Component.InvokeAsync("_BlogDetailCommentComponentPartial", new { id = ViewBag.blogId })
+                <div class="pt-5 comment-wrap">
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial", new { id = ViewBag.blogId })
+                    @await Component.InvokeAsync("_BlogDetailLeaveACommentComponentPartial", new { id = ViewBag.blogId })
 
-
+                </div>
             </div>
 
             <!-- END main-content -->

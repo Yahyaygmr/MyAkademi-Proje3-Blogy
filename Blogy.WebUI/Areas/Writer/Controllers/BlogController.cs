@@ -17,12 +17,14 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
+        private readonly ICommentService _commentService;
 
-        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService)
+        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService, ICommentService commentService)
         {
             _userManager = userManager;
             _articleService = articleService;
             _categoryService = categoryService;
+            _commentService = commentService;
         }
 
         public async Task<IActionResult> MyBlogList()
@@ -93,6 +95,13 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
             }
             ViewBag.categories = GetCategories();
             return View();
+        }
+        public IActionResult BlogComments(int id)
+        {
+            ViewBag.blogName = _articleService.TGetById(id).Title;
+
+            var comments = _commentService.TGetCommentsByArticleId(id);
+            return View(comments);
         }
         internal List<SelectListItem> GetCategories()
         {

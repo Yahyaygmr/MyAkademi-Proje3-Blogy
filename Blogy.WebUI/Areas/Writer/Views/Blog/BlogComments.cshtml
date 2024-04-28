@@ -1,0 +1,25 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "BlogComments";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<h1>@ViewBag.blogName </h1>
+<hr />
+<table class="table">
+    <tr>
+        <td>#</td>
+        <td>Yorumu yapan</td>
+        <td>Yorum</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CommentId</td>
+            <td>@item.NameSurname</td>
+            <td>@item.Content</td>
+        </tr>
+    }
+
+</table>
+
