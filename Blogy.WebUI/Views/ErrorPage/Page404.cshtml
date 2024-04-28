@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -9,8 +8,44 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Page404</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .background {
+            background-image: url(/images/notfound.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+    </style>
 </head>
-<body>
-    <h1>404 sayfası</h1>
+<body class="background">
+    <div class="container p-5" style="height:90vh;">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                   @*  <h1 class="display-1">404</h1> *@
+                    <h1 class="mb-4">Aradığın Sayfayı Bulamadık !</h1>
+                    <p class="mb-4">Malesef böyle bir sayfa yok. Aradığın sayfa silinmiş olabilir. Bir hata olduğunu düşünüyorsan <a href="/Contact/Index">iletişim</a> sayfasından sayfa yönticisi ile iletişime geçebilirsin.</p>
+                    <a class="btn btn-secondary rounded-pill py-3 px-5" href="/Blog/Index/">Anasayfaya Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container text-body copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="fw-semi-bold" href="#">Blogy</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="fw-semi-bold" href="https://yahyaygmur.com">Yahya Yağmur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

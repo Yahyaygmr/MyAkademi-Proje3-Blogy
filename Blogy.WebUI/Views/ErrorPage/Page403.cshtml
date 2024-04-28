@@ -9,8 +9,46 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Page403</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+   @*  <link href="~/yazar/documentation/style.css" rel="stylesheet" />
+    <link href="~/yazar/template/assets/css/style.css" rel="stylesheet" /> *@
+    <style>
+        .background {
+            background-image: url(/images/forbidden.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+    </style>
 </head>
-<body>
-    <h1>403 Sayfası</h1>
+<body class="background">
+    <div class="container p-5" style="height:90vh;">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-white">
+                    <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                    <h1 class="display-1">403</h1>
+                    <h1 class="mb-4">Bu Sayfaya Erişiminiz Yok !</h1>
+                    <p class="mb-4">Bu sayfaya erişiminiz yok. Henüz yetkilendirme işleminiz yapılmamış veya yetkiniz iptal edilmiş olablir. Bir hata olduğunu düşünüyorsanız <a href="/Contact/Index/">İletişim</a> sayfasından sayfa yöneticisi ile iletşime geçebilirsiniz.</p>
+                    <a class="btn btn-warning rounded-pill py-3 px-5" href="/Blog/Index/">Anasayfaya Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container text-body copyright py-4 text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="fw-semi-bold" href="#">Blogy</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="fw-semi-bold" href="https://yahyaygmur.com">Yahya Yağmur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
