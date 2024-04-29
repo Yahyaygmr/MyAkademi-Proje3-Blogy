@@ -13,6 +13,7 @@
     + Miscellaneous Mixins
     + BlockQuote Mixins
     + Cards Mixins
+    + Cards Mixins
     + Color Functions Mixins
     + Tooltips
     + popovers
@@ -14600,7 +14601,7 @@ dl {
     padding-right: 15px;
     width: calc(100% - 260px);
     height: 70px;
-    background: #000; }
+    background: #e1e3f1; }
     @media (max-width: 991px) {
       .navbar .navbar-menu-wrapper {
         width: 100%;
@@ -14902,9 +14903,9 @@ dl {
       .rtl .sidebar .sidebar-brand-wrapper .sidebar-brand {
         padding: 20px 61px 10px 0; }
       .sidebar .sidebar-brand-wrapper .sidebar-brand img {
-        width: calc(260px - 130px);
+       /* width: calc(260px - 130px);*/
         max-width: 100%;
-        height: 48px;
+        height: 60px;
         margin: auto;
         vertical-align: middle; }
     .sidebar .sidebar-brand-wrapper .brand-logo-mini {
