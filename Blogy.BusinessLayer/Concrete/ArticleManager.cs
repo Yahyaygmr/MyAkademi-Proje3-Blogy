@@ -80,5 +80,10 @@ namespace Blogy.BusinessLayer.Concrete
         {
             return _articleDal.GetArticleWithWriterAndCategory();
         }
+
+        public List<Article> TArticleListWithFilter(string? filter)
+        {
+            return _articleDal.ArticleListWithFilter(filter);
+        }
     }
 }

@@ -21,9 +21,10 @@ namespace Blogy.WebUI.Controllers
         {
             return View();
         }
-        public IActionResult BlogList()
+        public IActionResult BlogList(string? filter)
         {
-            var blogs = _articleService.TGetArticleWithWriterAndCategory();
+            var blogs = _articleService.TArticleListWithFilter(filter);
+            ViewBag.filter = filter;
             return View(blogs);
         }
         public IActionResult BlogDetail(int id)

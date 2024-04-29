@@ -19,6 +19,26 @@ namespace Blogy.DataAccessLayer.EntityFramework
             _context = context;
         }
 
+        public List<Article> ArticleListWithFilter(string? filter)
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return _context.Articles
+               .Include(x => x.AppUser)
+               .Include(x => x.Category)
+               .ToList();
+            }
+            else
+            {
+                var values =  _context.Articles
+               .Include(x => x.Category)
+               .Where(x=> x.Title.ToLower().Contains(filter.ToLower()))
+               .ToList();
+
+                return values;
+            }
+        }
+
         public List<Article> GetArticlesByArticleByWriter(int id)
         {
             var values = _context.Articles

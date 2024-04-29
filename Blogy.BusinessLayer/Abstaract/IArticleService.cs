@@ -14,6 +14,7 @@ namespace Blogy.BusinessLayer.Abstaract
         AppUser TGetWriterInfoByArticleWriter(int id);
         List<Article> TGetArticlesByArticleByWriter(int id);
         List<Article> TGetLastNArticle(int count);
+        List<Article> TArticleListWithFilter(string? filter);
 
 
     }

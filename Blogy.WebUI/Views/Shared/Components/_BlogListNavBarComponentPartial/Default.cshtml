@@ -1,4 +1,20 @@
-﻿<nav class="site-nav">
+﻿<style>
+	.search-form .input-group {
+		display: flex;
+		justify-content:space-between;
+	}
+
+		.search-form .input-group .form-control {
+			flex: 1;
+			margin-right:15px;
+		}
+
+	.search-form .form-control {
+		width: 300px; /* Genişlik için istediğiniz değeri ayarlayın */
+		height: 50px; /* Yükseklik için istediğiniz değeri ayarlayın */
+	}
+</style>
+<nav class="site-nav">
 	<div class="container">
 		<div class="menu-bg-wrap">
 			<div class="site-navigation">
@@ -24,9 +40,14 @@
 						<a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
 							<span></span>
 						</a>
-						<form action="#" class="search-form d-none d-lg-inline-block">
-							<input type="text" class="form-control" placeholder="Arama Yap...">
-							<span class="bi-search"></span>
+						<form asp-controller="Blog" asp-action="BlogList" class="search-form d-none d-lg-inline-block">
+							<div class="input-group">
+								<input type="text" name="filter" class="form-control" placeholder="Blog Ara...">
+								<span class="bi-search"></span>
+								<span class="input-group-btn ml-2">
+									<button class="btn btn-outline-light btn-sm" type="submit">Bul</button>
+								</span>
+							</div>
 						</form>
 					</div>
 				</div>

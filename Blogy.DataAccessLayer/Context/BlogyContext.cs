@@ -23,5 +23,6 @@ namespace Blogy.DataAccessLayer.Context
         public DbSet<About> Abouts { get; set; }
         public DbSet<ContactUs> ContactUses { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<HelpAdmin> HelpAdmins { get; set; }
     }
 }

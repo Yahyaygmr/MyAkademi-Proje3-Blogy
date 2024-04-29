@@ -1,7 +1,7 @@
 ﻿@model List<Article>
 @{
-	Layout = "~/Views/Shared/_UILayout.cshtml";
-	ViewData["Title"] = "BlogListesi";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+    ViewData["Title"] = "BlogListesi";
 }
 <div class="hero overlay inner-page bg-primary py-5">
     <div class="container">
@@ -15,7 +15,14 @@
 
 <div class="section search-result-wrap">
     <div class="container">
-
+        @if(!(string.IsNullOrEmpty(ViewBag.filter)))
+        {
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading">Aranan Kelime: '@ViewBag.filter'</div>
+                </div>
+            </div>
+        }
         <div class="row posts-entry">
             <div class="col-lg-10">
                 @foreach (var item in Model)
@@ -26,15 +33,15 @@
                         </a>
                         <div>
                             <span class="date">@item.CreatedDate.ToString("dd MMM yyyy") &bullet; <a href="#">@item.Category.Name</a></span>
-                            <h2><a href="single.html">@item.Title</a></h2>
-                            <p>@Html.Raw(item.Description.Substring(0,60)) ...</p>
+                            <h2><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h2>
+                            <p>@Html.Raw(item.Description.Substring(0, 60)) ...</p>
                             <p><a href="/Blog/BlogDetail/@item.ArticleId" class="btn btn-sm btn-outline-primary">Devamını Oku</a></p>
                         </div>
                     </div>
                 }
-             
 
-                <div class="row text-start pt-5 border-top">
+
+                @* <div class="row text-start pt-5 border-top">
                     <div class="col-md-12">
                         <div class="custom-pagination">
                             <span>1</span>
@@ -45,11 +52,11 @@
                             <a href="#">15</a>
                         </div>
                     </div>
-                </div>
+                </div> *@
 
             </div>
         </div>
     </div>
 </div>
-	
+
 
