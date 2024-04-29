@@ -8,13 +8,11 @@ namespace Blogy.WebUI.Controllers
     [AllowAnonymous]
     public class BlogController : Controller
     {
-        private readonly IArticleService _articleService;
-        private readonly ICommentService _commentService;
+        private readonly IServiceManager _manager;
 
-        public BlogController(IArticleService articleService, ICommentService commentService)
+        public BlogController(IServiceManager manager)
         {
-            _articleService = articleService;
-            _commentService = commentService;
+            _manager = manager;
         }
 
         public IActionResult Index()
@@ -23,7 +21,7 @@ namespace Blogy.WebUI.Controllers
         }
         public IActionResult BlogList(string? filter)
         {
-            var blogs = _articleService.TArticleListWithFilter(filter);
+            var blogs = _manager.ArticleService.TArticleListWithFilter(filter);
             ViewBag.filter = filter;
             return View(blogs);
         }
@@ -38,7 +36,7 @@ namespace Blogy.WebUI.Controllers
             comment.ArticleId = id;
             comment.Status = false;
 
-            _commentService.TInsert(comment);
+            _manager.CommentService.TInsert(comment);
 
             return RedirectToAction("Index");
         }

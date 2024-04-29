@@ -1,5 +1,6 @@
 using Blogy.BusinessLayer.Abstaract;
 using Blogy.BusinessLayer.Concrete;
+using Blogy.BusinessLayer.Container;
 using Blogy.BusinessLayer.ValidationRules.ArticleValidation;
 using Blogy.DataAccessLayer.Abstaract;
 using Blogy.DataAccessLayer.Context;
@@ -39,21 +40,7 @@ builder.Services.ConfigureApplicationCookie(opt =>
 });
 
 builder.Services.AddDbContext<BlogyContext>();
-
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-
-builder.Services.AddScoped<IArticleDal, EfArticleDal>();
-builder.Services.AddScoped<IArticleService, ArticleManager>();
-
-builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-builder.Services.AddScoped<ICommentService, CommentManager>();
-
-builder.Services.AddScoped<ITagDal, EfTagDal>();
-builder.Services.AddScoped<ITagService, TagManager>();
-
-
-
+builder.Services.ContainerDependencies();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
