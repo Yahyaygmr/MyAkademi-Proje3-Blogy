@@ -1,18 +1,24 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AdminLayout- @ViewData["Title"]</title>
-
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
+<html lang="en">
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
 <body>
-    @RenderBody()
+    <div class="container-scroller">
+        @await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
+        <div class="container-fluid page-body-wrapper">
+            @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+                @await Component.InvokeAsync("_AdminLayoutFooterComponentPartial")
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("_AdminLayoutScriptsComponentPartial")
 </body>
 </html>
+
