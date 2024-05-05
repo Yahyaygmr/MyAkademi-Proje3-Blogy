@@ -1,30 +1,29 @@
-﻿@{
+﻿@model Blogy.WebUI.Areas.Writer.Models.WeatherApiViewModel
+@{
     ViewData["Title"] = "Dashboard Index";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
 }
 
 <div class="container">
-
-
     <div class="row">
         <div class="col-xl-8 grid-margin stretch-card">
             <div class="card card-calender">
                 <div class="card-body">
                     <div class="row pt-4">
                         <div class="col-sm-6">
-                            <h1 class="text-white">@ViewBag.lastUpdateTime</h1>
-                            <h5 class="text-white">@ViewBag.lastUpdateDate</h5>
-                            <h5 class="text-white pt-2 m-0">Yağış:50%</h5>
-                            <h5 class="text-white m-0">Nem:23%</h5>
-                            <h5 class="text-white m-0">Rüzgar:13 km/h</h5>
+                            <h1 class="text-white">10:16PM</h1>
+                            <h5 class="text-white">Monday 25 October, 2016</h5>
+                            <h5 class="text-white pt-2 m-0">Precipitation:50%</h5>
+                            <h5 class="text-white m-0">Humidity:23%</h5>
+                            <h5 class="text-white m-0">Wind:13 km/h</h5>
                         </div>
                         <div class="col-sm-6 text-sm-right pt-3 pt-sm-0">
-                            <h3 class="text-white">@ViewBag.clouds</h3>
-                            <p class="text-white m-0">@ViewBag.cityName, Türkiye</p>
-                            <h3 class="text-white m-0">@ViewBag.tempreture°C</h3>
+                            <h3 class="text-white">Clear Sky</h3>
+                            <p class="text-white m-0">London, UK</p>
+                            <h3 class="text-white m-0">21°C</h3>
                         </div>
                     </div>
-                   @*  <div class="row mt-5">
+                    <div class="row mt-5">
                         <div class="col-sm-12">
                             <ul class="d-flex pl-0 overflow-auto">
                                 <li class="weakly-weather-item text-white font-weight-medium text-center active">
@@ -69,25 +68,157 @@
                                 </li>
                             </ul>
                         </div>
-                    </div> *@
+                    </div>
                 </div>
             </div>
         </div>
+        @*  <div class="col-xl-8 grid-margin stretch-card">
+        <div class="card card-calender">
+        <div class="card-body">
+        <div class="row pt-4">
+        <div class="col-sm-6">
+        <h1 class="text-white">@ViewBag.lastUpdateTime</h1>
+        <h5 class="text-white">@ViewBag.lastUpdateDate</h5>
+        <h5 class="text-white pt-2 m-0">Gün Doğumu:@Model.current_observation.astronomy.sunrise</h5>
+        <h5 class="text-white m-0">Gün Batımı:@Model.current_observation.astronomy.sunset</h5>
+        <h5 class="text-white m-0">Rüzgar:@Model.current_observation.wind.speed km/h</h5>
+        </div>
+        <div class="col-sm-6 text-sm-right pt-3 pt-sm-0">
+        <h3 class="text-white">@ViewBag.clouds</h3>
+        <p class="text-white m-0">@Model.location.city, @Model.location.country</p>
+        <h3 class="text-white m-0">@Model.current_observation.condition.temperature°C</h3>
+        </div>
+        </div>
+        <div class="row mt-5">
+        <div class="col-sm-12">
+        <ul class="d-flex pl-0 overflow-auto">
+        @foreach (var item in Model.forecasts.Take(8).ToList())
+        {
+        <li class="weakly-weather-item text-white font-weight-medium text-center active">
+        @{
+        var dayTr = "";
+        var cloudIcon = "";
+        switch (item.day)
+        {
+        case "Sun":
+        dayTr = "Pazar";
+        break;
+        case "Mon":
+        dayTr = "Pazartesi";
+        break;
+        case "Tue":
+        dayTr = "Salı";
+        break;
+        case "Wed":
+        dayTr = "Çarşamba";
+        break;
+        case "Thu":
+        dayTr = "Perşembe";
+        break;
+        case "Fri":
+        dayTr = "Cuma";
+        break;
+        case "Sat":
+        dayTr = "Cumartesi";
+        break;
+
+        }
+
+        // Yahoo Weather API'da, "code" değeri hava durumu durumunu temsil eder. Bu kodlar, belirli bir hava durumu durumunu tanımlamak için kullanılır. Örneğin, güneşli bir gün için farklı bir kod, yağmurlu bir gün için farklı bir kod kullanılır.
+
+        // Code değerlerini yorumlamak için, Yahoo'nun belirttiği belgeleri kontrol etmek önemlidir. Ancak, genellikle hava durumu durumlarına genel olarak benzeyen kodlar vardır. Örneğin:
+
+        // 0: Tornado
+        // 1: Tropical Storm
+        // 2: Hurricane
+        // 3: Severe Thunderstorms
+        // 4: Thunderstorms
+        // 5: Mixed Rain and Snow
+        // 6: Mixed Rain and Sleet
+        // 7: Mixed Snow and Sleet
+        // 8: Freezing Drizzle
+        // 9: Drizzle
+        // 10: Freezing Rain
+        // 11: Showers
+        // 12: Showers
+        // 13: Snow Flurries
+        // 14: Light Snow Showers
+        // 15: Blowing Snow
+        // 16: Snow
+        // 17: Hail
+        // 18: Sleet
+        // 19: Dust
+        // 20: Foggy
+        // 21: Haze
+        // 22: Smoky
+        // 23: Blustery
+        // 24: Windy
+        // 25: Cold
+        // 26: Cloudy
+        // 27: Mostly Cloudy (Night)
+        // 28: Mostly Cloudy (Day)
+        // 29: Partly Cloudy (Night)
+        // 30: Partly Cloudy (Day)
+        // 31: Clear (Night)
+        // 32: Sunny
+        // 33: Fair (Night)
+        // 34: Fair (Day)
+        // 35: Mixed Rain and Hail
+        // 36: Hot
+        // 37: Isolated Thunderstorms
+        // 38: Scattered Thunderstorms
+        // 39: Scattered Thunderstorms
+        // 40: Scattered Showers
+        // 41: Heavy Snow
+        // 42: Scattered Snow Showers
+        // 43: Heavy Snow
+        // 44: Partly Cloudy
+        // 45: Thundershowers
+        // 46: Snow Showers
+        // 47: Isolated Thundershowers
+        if (item.text.ToLower().Contains("sun"))
+        {
+        cloudIcon = "mdi mdi-weather-sunny";
+        }
+        else if (item.text.ToLower().Contains("cloud"))
+        {
+        cloudIcon = "mdi mdi-weather-sunny";
+        }
+        else if (item.text.ToLower().Contains("fog"))
+        {
+        cloudIcon = "mdi mdi-weather-fog";
+        }
+        else if (item.text.ToLower().Contains("showers"))
+        {
+        cloudIcon = "mdi mdi-weather-hail";
+        }
+        }
+        <p class="mb-0">@dayTr</p>
+        <i class="@cloudIcon"></i>
+        <p class="mb-0">@item.low<span class="symbol">°c</span></p>-<p class="mb-0">@item.high<span class="symbol">°c</span></p>
+        </li>
+        }
+        </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div> *@
         <div class="col-xl-4 grid-margin stretch-card">
-           <div class="row">
+            <div class="row">
                 <div class="col-xl-12 col-md-12 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-                    <div class="card bg-primary">
+                    <div class="card bg-danger">
                         <div class="card-body px-3 py-4">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div class="color-card">
-                                    <p class="mb-0 color-card-head">Orders</p>
+                                    <p class="mb-0 color-card-head">Blog Sayısı</p>
                                     <h2 class="text-white">
-                                        $1,753.<span class="h5">00</span>
+                                        @ViewBag.myBlogsCount
                                     </h2>
                                 </div>
-                                <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
+                                <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-danger"></i>
                             </div>
-                            <h6 class="text-white">67.98% Since last month</h6>
+                            <h6 class="text-white">Yazmış olduğum blogların toplam sayısı.</h6>
                         </div>
                     </div>
                 </div>
@@ -96,30 +227,55 @@
                         <div class="card-body px-3 py-4">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div class="color-card">
-                                    <p class="mb-0 color-card-head">Affiliate</p>
-                                    <h2 class="text-white">2368</h2>
+                                    <p class="mb-0 color-card-head">Yapılan Yorum Sayısı</p>
+                                    <h2 class="text-white"> @ViewBag.commentCount</h2>
                                 </div>
                                 <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
                             </div>
-                            <h6 class="text-white">20.32% Since last month</h6>
+                            <h6 class="text-white">Sistemde bulunan tüm bloglara yapılmış olan toplam yorum sayısı.</h6>
                         </div>
                     </div>
                 </div>
-           </div>
+                <div class="col-xl-12 col-md-12 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+                    <div class="card bg-warning">
+                        <div class="card-body px-3 py-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="color-card">
+                                    <p class="mb-0 color-card-head">Yazdığım Son Blog</p>
+                                    <h2 class="text-white">
+                                        @if (string.IsNullOrEmpty(ViewBag.myLastBlogName))
+                                        {
+                                           
+                                            <p>Henüz blog yazmadınız.</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@ViewBag.myLastBlogName</p>
+                                        }
+                                    </h2>
+                                </div>
+                                <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-warning"></i>
+                            </div>
+                            <h6 class="text-white">Yazmış olduğum son blogun tarihi.</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-warning">
+            <div class="card bg-secondary">
                 <div class="card-body px-3 py-4">
                     <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Sales</p>
-                            <h2 class="text-white">
-                                $8,753.<span class="h5">00</span>
+                        <div class="text-black">
+                            <p class="mb-0 color-card-head">Toplam Blog Sayısı</p>
+                            <h2 class="text-black">
+                                @ViewBag.blogCount
                             </h2>
                         </div>
-                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
+                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-secondary"></i>
                     </div>
-                    <h6 class="text-white">18.33% Since last month</h6>
+                    <h6 class="text-black">Sistemde bulunan bütün blogların toplam sayısı.</h6>
                 </div>
             </div>
         </div>
@@ -128,14 +284,14 @@
                 <div class="card-body px-3 py-4">
                     <div class="d-flex justify-content-between align-items-start">
                         <div class="color-card">
-                            <p class="mb-0 color-card-head">Margin</p>
+                            <p class="mb-0 color-card-head">En Çok Blog Yazılan Kategori</p>
                             <h2 class="text-white">
-                                $5,300.<span class="h5">00</span>
+                                @ViewBag.mostUsedCategoy
                             </h2>
                         </div>
                         <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
                     </div>
-                    <h6 class="text-white">13.21% Since last month</h6>
+                    <h6 class="text-white">Sistemde bulunan bloglar içerisinde en çok tercih edilen kategori.</h6>
                 </div>
             </div>
         </div>
@@ -144,113 +300,24 @@
                 <div class="card-body px-3 py-4">
                     <div class="d-flex justify-content-between align-items-start">
                         <div class="color-card">
-                            <p class="mb-0 color-card-head">Orders</p>
+                            <p class="mb-0 color-card-head">Son Bloğun Tarihi</p>
                             <h2 class="text-white">
-                                $1,753.<span class="h5">00</span>
+                                @if (string.IsNullOrEmpty(ViewBag.myLastBlogDate))
+                                {
+                                    <p>Henüz blog yazmadınız.</p>
+                                }
+                                else
+                                {
+                                    <p>@ViewBag.myLastBlogDate</p>
+                                }
                             </h2>
                         </div>
                         <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
                     </div>
-                    <h6 class="text-white">67.98% Since last month</h6>
+                    <h6 class="text-white">Yazmış olduğum son blogun tarihi.</h6>
                 </div>
             </div>
         </div>
 
-
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-success">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Affiliate</p>
-                            <h2 class="text-white">2368</h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
-                    </div>
-                    <h6 class="text-white">20.32% Since last month</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-warning">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Sales</p>
-                            <h2 class="text-white">
-                                $8,753.<span class="h5">00</span>
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
-                    </div>
-                    <h6 class="text-white">18.33% Since last month</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-danger">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Margin</p>
-                            <h2 class="text-white">
-                                $5,300.<span class="h5">00</span>
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
-                    </div>
-                    <h6 class="text-white">13.21% Since last month</h6>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-primary">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Orders</p>
-                            <h2 class="text-white">
-                                $1,753.<span class="h5">00</span>
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
-                    </div>
-                    <h6 class="text-white">67.98% Since last month</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-success">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Affiliate</p>
-                            <h2 class="text-white">2368</h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
-                    </div>
-                    <h6 class="text-white">20.32% Since last month</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-warning">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Sales</p>
-                            <h2 class="text-white">
-                                $8,753.<span class="h5">00</span>
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
-                    </div>
-                    <h6 class="text-white">18.33% Since last month</h6>
-                </div>
-            </div>
-        </div>
     </div>
-
 </div>

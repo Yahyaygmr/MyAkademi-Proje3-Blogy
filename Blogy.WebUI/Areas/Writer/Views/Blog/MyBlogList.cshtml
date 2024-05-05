@@ -33,9 +33,9 @@
                                 {
                                     <tr>
                                         <td>@item.ArticleId</td>
-                                        <td>@item.Title</td>
-                                        <td>@item.CreatedDate</td>
-                                        <td>@item.CategoryId</td>
+                                        <td>@item.Title.Substring(0,10) ...</td>
+                                        <td>@item.CreatedDate.ToString("dd MMM yyyy")</td>
+                                        <td>@item.Category.Name</td>
                                         <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-danger">Sil</a></td>
                                         <td><a href="/Writer/Blog/UpdateBlog/@item.ArticleId" class="btn btn-info">Güncelle</a></td>
                                         <td><a href="/Writer/Blog/BlogComments/@item.ArticleId" class="btn btn-warning">Blog Yorumları</a></td>

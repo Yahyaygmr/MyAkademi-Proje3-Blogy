@@ -1,6 +1,7 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
 using Blogy.DataAccessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,6 +85,11 @@ namespace Blogy.BusinessLayer.Concrete
         public List<Article> TArticleListWithFilter(string? filter)
         {
             return _articleDal.ArticleListWithFilter(filter);
+        }
+
+        public DbSet<Article> GetTContext()
+        {
+           return _articleDal.GetTContext();
         }
     }
 }

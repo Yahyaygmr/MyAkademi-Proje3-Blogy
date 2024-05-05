@@ -18,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<BlogyContext>()
     .AddErrorDescriber<CustomIdentityValidator>();
+builder.Services.AddHttpClient();
 
 builder.Services.AddMvc(config =>
 {

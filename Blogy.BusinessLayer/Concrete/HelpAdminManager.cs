@@ -1,5 +1,6 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace Blogy.BusinessLayer.Concrete
 {
     public class HelpAdminManager : IHelpAdminService
     {
+        public DbSet<HelpAdmin> GetTContext()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TDelete(int id)
         {
             throw new NotImplementedException();

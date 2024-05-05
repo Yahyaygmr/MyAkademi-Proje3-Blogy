@@ -2,6 +2,7 @@
 using Blogy.DataAccessLayer.Abstaract;
 using Blogy.DataAccessLayer.DTO;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace Blogy.BusinessLayer.Concrete
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
+        }
+
+        public DbSet<Category> GetTContext()
+        {
+            return _categoryDal.GetTContext();
         }
 
         public void TDelete(int id)

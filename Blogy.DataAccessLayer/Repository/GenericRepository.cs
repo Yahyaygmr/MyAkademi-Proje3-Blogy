@@ -1,5 +1,6 @@
 ﻿using Blogy.DataAccessLayer.Abstaract;
 using Blogy.DataAccessLayer.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,10 @@ namespace Blogy.DataAccessLayer.Repository
         {
             _context = context;
         }
-
+        public DbSet<T> GetTContext()
+        {
+            return _context.Set<T>();
+        }
         public void Delete(int id)
         {
             var value = _context.Set<T>().Find(id);
@@ -33,6 +37,8 @@ namespace Blogy.DataAccessLayer.Repository
         {
             return _context.Set<T>().ToList();
         }
+
+       
 
         public void Insert(T entity)
         {

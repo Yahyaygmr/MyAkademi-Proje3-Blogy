@@ -1,6 +1,7 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
 using Blogy.DataAccessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,11 @@ namespace Blogy.BusinessLayer.Concrete
         public CommentManager(ICommentDal commentDal)
         {
             _commentDal = commentDal;
+        }
+
+        public DbSet<Comment> GetTContext()
+        {
+            return _commentDal.GetTContext();
         }
 
         public void TDelete(int id)

@@ -43,6 +43,7 @@ namespace Blogy.DataAccessLayer.EntityFramework
         {
             var values = _context.Articles
                 .Where(x => x.AppUserId == id)
+                .Include(x =>x.Category)
                 .OrderByDescending(x => x.ArticleId)
                 .ToList();
             return values;

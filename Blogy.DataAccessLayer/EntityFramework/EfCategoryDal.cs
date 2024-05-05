@@ -18,13 +18,11 @@ namespace Blogy.DataAccessLayer.EntityFramework
         public EfCategoryDal(BlogyContext context) : base(context)
         {
             _context = context;
-        }
-
+        } 
         public int GetCategoryCount()
         {
             return _context.Categories.Count();
         }
-
         public List<CategoryListWithArticleCountDto> GetCategoryWithArticleCount()
         {
             var categories = _context.Categories
