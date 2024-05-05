@@ -1,6 +1,13 @@
 ﻿@model AppUser
 <div class="bio text-center">
-    <img src="@Model.ImageUrl" alt="Image Placeholder" class="img-fluid mb-3">
+    @if (string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="~/images/randomUser.jpg" alt="Image Placeholder" class="img-fluid mb-3">
+    }
+    else
+    {
+        <img src="@Model.ImageUrl" alt="Image Placeholder" class="img-fluid mb-3">
+    }
     <div class="bio-body">
         <h2>@Model.Name @Model.Surname</h2>
         <p class="mb-4">@Model.Description.</p>

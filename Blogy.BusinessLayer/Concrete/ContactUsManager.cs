@@ -1,4 +1,5 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
+using Blogy.DataAccessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,34 +12,41 @@ namespace Blogy.BusinessLayer.Concrete
 {
     public class ContactUsManager : IContactUsService
     {
-        public DbSet<ContactUs> GetTContext()
+        private readonly IContactUsDal _contactUsDal;
+
+		public ContactUsManager(IContactUsDal contactUsDal)
+		{
+			_contactUsDal = contactUsDal;
+		}
+
+		public DbSet<ContactUs> GetTContext()
         {
-            throw new NotImplementedException();
+           return _contactUsDal.GetTContext();
         }
 
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Delete(id);
         }
 
         public ContactUs TGetById(int id)
         {
-            throw new NotImplementedException();
+           return _contactUsDal.GetById(id);
         }
 
         public List<ContactUs> TGetListAll()
         {
-            throw new NotImplementedException();
+           return _contactUsDal.GetListAll();
         }
 
         public void TInsert(ContactUs entity)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Insert(entity);
         }
 
         public void TUpdate(ContactUs entity)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Update(entity);
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿@model Message
+
+<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+	<form method="post" asp-action="SendMessage" asp-controller="Contact">
+		<div class="row">
+			<div class="col-6 mb-3">
+				<input type="text" class="form-control" placeholder="Adınız" asp-for="Name" required>
+			</div>
+			<div class="col-6 mb-3">
+				<input type="email" class="form-control" placeholder="Email Adresiniz" asp-for="Email" required>
+			</div>
+			<div class="col-12 mb-3">
+				<input type="text" class="form-control" placeholder="Konu" asp-for="Subject" required>
+			</div>
+			<div class="col-12 mb-3">
+				<textarea asp-for="MessageContent" cols="30" rows="7" class="form-control" placeholder="Mesajınız" required></textarea>
+			</div>
+
+			<div class="col-12">
+				<button class="btn btn-primary">Mesaj Gönder</button>
+			</div>
+		</div>
+	</form>
+</div>

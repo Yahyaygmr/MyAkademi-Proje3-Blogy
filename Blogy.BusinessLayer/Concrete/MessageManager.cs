@@ -1,4 +1,5 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
+using Blogy.DataAccessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,36 +10,43 @@ using System.Threading.Tasks;
 
 namespace Blogy.BusinessLayer.Concrete
 {
-    public class MessageManager : IMessageService
-    {
-        public DbSet<Message> GetTContext()
-        {
-            throw new NotImplementedException();
-        }
+	public class MessageManager : IMessageService
+	{
+		private readonly IMessageDal _messageDal;
 
-        public void TDelete(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public MessageManager(IMessageDal messageDal)
+		{
+			_messageDal = messageDal;
+		}
 
-        public Message TGetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public DbSet<Message> GetTContext()
+		{
+			return _messageDal.GetTContext();
+		}
 
-        public List<Message> TGetListAll()
-        {
-            throw new NotImplementedException();
-        }
+		public void TDelete(int id)
+		{
+			_messageDal.Delete(id);
+		}
 
-        public void TInsert(Message entity)
-        {
-            throw new NotImplementedException();
-        }
+		public Message TGetById(int id)
+		{
+			return _messageDal.GetById(id);
+		}
 
-        public void TUpdate(Message entity)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public List<Message> TGetListAll()
+		{
+			return _messageDal.GetListAll();
+		}
+
+		public void TInsert(Message entity)
+		{
+			_messageDal.Insert(entity);
+		}
+
+		public void TUpdate(Message entity)
+		{
+			_messageDal.Update(entity);
+		}
+	}
 }

@@ -19,6 +19,11 @@ namespace Blogy.BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
+        public List<Comment> TGetCommentsWithArticle()
+        {
+            return _commentDal.GetCommentsEithArticle();
+        }
+
         public DbSet<Comment> GetTContext()
         {
             return _commentDal.GetTContext();

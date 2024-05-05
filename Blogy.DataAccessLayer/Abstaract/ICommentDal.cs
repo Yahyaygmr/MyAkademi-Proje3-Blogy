@@ -10,5 +10,6 @@ namespace Blogy.DataAccessLayer.Abstaract
     public interface ICommentDal : IGenericDal<Comment>
     {
         List<Comment> GetCommentsByArticleId(int id);
+        List<Comment> GetCommentsEithArticle();
     }
 }

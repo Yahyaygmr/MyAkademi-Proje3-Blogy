@@ -3,18 +3,20 @@
     ViewData["Title"] = "Kategori Listesi";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<div class="container">
-    <h1>Categori Oluştur</h1>
-    <hr />
-    <form method="post">
-        <input type="hidden" name="CategoryId"value="@Model.CategoryId"/>
-        <div class="form-group">
-            <label>Kategori Adı</label>
-            <input type="text" name="Name" class="form-control" value="@Model.Name"/>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Kategori Güncelle</h4>
+        <div>
+            <form method="post">
+                <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                <div class="form-group">
+                    <label>Kategori Adı</label>
+                    <input type="text" name="Name" class="form-control" value="@Model.Name" />
+                </div>
+                <div class="form-group mt-3">
+                    <button class="btn btn-primary">Güncelle</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group mt-3">
-            <button class="btn btn-primary">Güncelle</button>
-        </div>
-    </form>
+    </div>
 </div>

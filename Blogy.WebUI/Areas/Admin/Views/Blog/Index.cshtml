@@ -1,0 +1,45 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "Blog Listesi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<div class="card">
+    <div class="card-body text-center">
+        <h2>Blog Listesi</h2>
+        <hr />
+        <div class="my-5">
+            <div class="table-responsive table-hover">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Blog Başlığı</th>
+                            <th>Tarih</th>
+                            <th>Kategori</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                            <th>Blog Yorumları</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ArticleId</td>
+                                <td>@item.Title.Substring(0, 10) ...</td>
+                                <td>@item.CreatedDate.ToString("dd MMM yyyy")</td>
+                                <td>@item.CategoryId</td>
+                                <td><a href="/Admin/Blog/DeleteBlog/@item.ArticleId" class="btn btn-danger">Sil</a></td>
+                                <td><a href="/Admin/Blog/UpdateBlog/@item.ArticleId" class="btn btn-info">Güncelle</a></td>
+                                <td><a href="/Admin/Blog/BlogComments/@item.ArticleId" class="btn btn-warning">Blog Yorumları</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

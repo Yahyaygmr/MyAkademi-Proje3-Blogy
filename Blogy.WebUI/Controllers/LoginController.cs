@@ -20,6 +20,10 @@ namespace Blogy.WebUI.Controllers
 		[HttpGet]
         public IActionResult Index()
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("MyBlogList", "Blog", new { area = "Writer" });
+            }
             return View();
         }
         [HttpPost]

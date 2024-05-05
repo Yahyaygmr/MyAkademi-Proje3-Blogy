@@ -4,17 +4,19 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<div class="container">
-    <h1>Categori Oluştur</h1>
-    <hr />
-    <form method="post">
-        <div class="form-group">
-            <label>Kategori Adı</label>
-            <input type="text" name="Name" class="form-control"/>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Yeni Kategori Oluştur</h4>
+        <div>
+            <form method="post">
+                <div class="form-group">
+                    <label>Kategori Adı</label>
+                    <input type="text" name="Name" class="form-control" />
+                </div>
+                <div class="form-group mt-3">
+                    <button class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group mt-3">
-            <button class="btn btn-primary">Kaydet</button>
-        </div>
-    </form>
+    </div>
 </div>
