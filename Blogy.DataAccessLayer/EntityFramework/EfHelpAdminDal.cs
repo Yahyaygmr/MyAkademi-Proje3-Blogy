@@ -19,6 +19,11 @@ namespace Blogy.DataAccessLayer.EntityFramework
             _context = context;
         }
 
+        public List<HelpAdmin> GetHelpAdminByUser(int userId)
+        {
+            return _context.HelpAdmins.Where(x => x.AppUserId == userId).ToList();
+        }
+
         public List<HelpAdmin> GetHelpAdminWithAppUser()
         {
             return _context.HelpAdmins.Include(x => x.AppUser).ToList();

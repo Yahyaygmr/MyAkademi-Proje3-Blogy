@@ -11,5 +11,6 @@ namespace Blogy.BusinessLayer.Abstaract
     {
         List<HelpAdmin> TGetHelpAdminWithAppUser();
         HelpAdmin TGetHelpAdminWithAppUserById(int id);
+        List<HelpAdmin> TGetHelpAdminByUser(int userId);
     }
 }

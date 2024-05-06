@@ -124,7 +124,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
                 }
             }
 
-            return RedirectToAction("UserList");
+            return RedirectToAction("Index","AdminWriter");
         }
     }
 }

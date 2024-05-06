@@ -34,6 +34,11 @@ namespace Blogy.BusinessLayer.Concrete
             return _helpAdminDal.GetById(id);
         }
 
+        public List<HelpAdmin> TGetHelpAdminByUser(int userId)
+        {
+            return _helpAdminDal.GetHelpAdminByUser(userId);
+        }
+
         public List<HelpAdmin> TGetHelpAdminWithAppUser()
         {
             return _helpAdminDal.GetHelpAdminWithAppUser();

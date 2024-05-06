@@ -19,9 +19,10 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var requests = _serviceManager.HelpAdminService.TGetListAll();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var requests = _serviceManager.HelpAdminService.TGetHelpAdminByUser(user.Id);
             return View(requests);
         }
         [HttpGet]
@@ -44,6 +45,11 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
         {
             var requests = _serviceManager.HelpAdminService.TGetById(id);
             return View(requests);
+        }
+        public IActionResult DeleteHelpRequest(int id)
+        {
+            _serviceManager.HelpAdminService.TDelete(id);
+            return RedirectToAction("Index");
         }
     }
 }

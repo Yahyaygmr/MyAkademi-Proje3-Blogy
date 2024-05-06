@@ -1,0 +1,75 @@
+﻿@model List<Blogy.WebUI.Areas.Admin.Models.UserList.UserListWithRoles>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body text-center">
+        <h2>Yazar Listesi</h2>
+        <hr />
+        <div class="my-5">
+            <div class="table-responsive table-hover">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Resim</th>
+                            <th>Adı Soyadı</th>
+                            <th>Mail Adresi</th>
+                            <th>Aktif Mi</th>
+                            <th>Yönet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>
+                                    @if(string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="~/images/randomuser.jpg" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.ImageUrl" />
+                                    }
+                                    </td>
+                                <td>@item.Name @item.Surname</td>
+                                <td>@item.Email</td>
+                                <td>
+                                    @if(item.Roles.Count>0)
+                                    {
+                                        @foreach (var role in item.Roles)
+                                        {
+                                            <span class="badge badge-success">@role</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Pasif</span>
+                                    }
+
+                                </td>
+                                <td>
+                                    @if (item.Roles.Contains("Admin"))
+                                    {
+                                        <a class="btn btn-sm btn-warning">Yönet</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Admin/Roles/AssingRoleToUser/@item.UserId" class="btn btn-sm btn-secondary">Yönet</a>
+                                    }
+                                   
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
