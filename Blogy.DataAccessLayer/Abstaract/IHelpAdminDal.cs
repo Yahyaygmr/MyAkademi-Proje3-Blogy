@@ -9,5 +9,7 @@ namespace Blogy.DataAccessLayer.Abstaract
 {
     public interface IHelpAdminDal : IGenericDal<HelpAdmin>
     {
+        List<HelpAdmin> GetHelpAdminWithAppUser();
+        HelpAdmin GetHelpAdminWithAppUserById(int id);
     }
 }

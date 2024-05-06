@@ -9,5 +9,7 @@ namespace Blogy.BusinessLayer.Abstaract
 {
     public interface IHelpAdminService : IGenericService<HelpAdmin>
     {
+        List<HelpAdmin> TGetHelpAdminWithAppUser();
+        HelpAdmin TGetHelpAdminWithAppUserById(int id);
     }
 }

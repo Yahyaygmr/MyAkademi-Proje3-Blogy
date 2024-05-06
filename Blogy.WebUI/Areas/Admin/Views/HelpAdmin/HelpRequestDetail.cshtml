@@ -1,0 +1,47 @@
+﻿@model HelpAdmin
+
+@{
+    ViewData["Title"] = "HelpRequestDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">Yazar Destek Talepleri Detay</h2>
+        <hr />
+        <div class="my-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span style="color:cornflowerblue">@Model.AppUser.UserName</span></h4>
+                    <p class="card-description">
+                        Talep Detayı
+                        @if (Model.Status)
+                        {
+                            <span class="badge badge-success"> Çözüldü </span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-warning"> Beklemede </span>
+                        }
+                    </p>
+                    <div class="form-group mt-3">
+                        <label>Konu</label>
+                        <input type="text" class="form-control" asp-for="Subject" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Mesaj</label>
+                        <textarea class="form-control" cols="7" rows="7" asp-for="Message"></textarea>
+                    </div>
+                    <div class="form-group mt-3">
+                        <a href="/Admin/HelpAdmin/Index" class="btn btn-success btn-sm"> Talep Listesine Dön</a>
+                        @if (!(Model.Status))
+                        {
+                            <a href="/Admin/HelpAdmin/MarkAsSolved/@Model.HelpAdminId" class="btn btn-warning btn-sm">Çözüldü Olarak İşaretle</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

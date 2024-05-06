@@ -1,0 +1,45 @@
+﻿@model HelpAdmin
+@{
+    ViewData["Title"] = "HalpRequestDetail";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span style="color:cornflowerblue">Sistemde yaşadığınız aksaklıklar ve taleplerinizi bu alandan sayfa adminine iletebilirsiniz. </span></h4>
+                    <p class="card-description">
+                        Talep Detayı 
+                        @if (Model.Status)
+                        {
+                           <span class="badge badge-inverse-success"> Çözüldü </span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-inverse-warning"> Beklemede </span>
+                        }
+                    </p>
+                        <div class="form-group mt-3">
+                            <label>Konu</label>
+                            <input type="text" class="form-control" asp-for="Subject" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Mesaj</label>
+                            <textarea class="form-control" cols="7" rows="7" asp-for="Message"></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                        <a href="/Writer/HelpAdmin/Index" class="btn btn-success"> Talep Listesine Dön</a>
+                          <a href="#" class="btn btn-danger">Talebi Sil</a>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

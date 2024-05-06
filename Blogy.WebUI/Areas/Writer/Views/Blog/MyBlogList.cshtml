@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "MyBlogListAsync";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="content-wrapper">
@@ -31,8 +32,9 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    count++;
                                     <tr>
-                                        <td>@item.ArticleId</td>
+                                        <td>@count</td>
                                         <td>@item.Title.Substring(0,10) ...</td>
                                         <td>@item.CreatedDate.ToString("dd MMM yyyy")</td>
                                         <td>@item.Category.Name</td>

@@ -3,23 +3,39 @@
     ViewData["Title"] = "BlogComments";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
 }
+<div class="content-wrapper">
+    <div class="page-header">
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span style="color:cornflowerblue">@ViewBag.blogName </span></h4>
+                    <p class="card-description">
+                       Blog Yorumları
+                    </p>
+                    <table class="table table-hover">
+                        <tr class="bg-light">
+                            <th>#</th>
+                            <th>Yorumu yapan</th>
+                            <th>Yorum</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CommentId</td>
+                                <td>@item.NameSurname</td>
+                                <td>@item.Content</td>
+                            </tr>
+                        }
 
-<h1>@ViewBag.blogName </h1>
-<hr />
-<table class="table">
-    <tr>
-        <td>#</td>
-        <td>Yorumu yapan</td>
-        <td>Yorum</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.CommentId</td>
-            <td>@item.NameSurname</td>
-            <td>@item.Content</td>
-        </tr>
-    }
+                    </table>
+                </div>
+            </div>
 
-</table>
+        </div>
+
+    </div>
+</div>
+
 
