@@ -17,7 +17,7 @@
                             <th>#</th>
                             <th>Blog</th>
                             <th>Yorum Tarihi</th>
-                            <th>Durumu</th>
+                            <th>YayınLansın Mı?</th>
                             <th>Yorum</th>
                             <th>işlemler</th>
                         </tr>
@@ -30,7 +30,28 @@
                                 <td>@count</td>
                                 <td>@item.Article.Title.Substring(0,10) ...</td>
                                 <td>@item.CommentDate.ToString("dd MMM yyyy HH:mm")</td>
-                                <td>@item.Status</td>
+                                @if (item.Status)
+                                {
+                                    <td>
+                                        <label class="switch">
+                                            <a href="/Admin/Comment/CommentStatus/@item.CommentId">
+                                                <input type="checkbox" @(item.Status ? "checked" : "") disabled>
+                                                <span class="slider"></span>
+                                            </a>
+                                        </label>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <label class="switch">
+                                            <a href="/Admin/Comment/CommentStatus/@item.CommentId">
+                                                <input type="checkbox" @(item.Status ? "checked" : "") disabled>
+                                                <span class="slider"></span>
+                                            </a>
+                                        </label>
+                                    </td>
+                                }
                                 <td>@item.Content</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-danger">Sil</a>

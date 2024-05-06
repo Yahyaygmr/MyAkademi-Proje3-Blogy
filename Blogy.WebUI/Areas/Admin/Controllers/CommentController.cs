@@ -1,4 +1,5 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
+using Blogy.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,23 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             var comments = _services.CommentService.TGetCommentsWithArticle();
 
             return View(comments);
+        }
+        public IActionResult CommentStatus(int id)
+        {
+            Comment? comment = _services.CommentService.TGetById(id);
+
+            if(comment.Status)
+            {
+                comment.Status = false;
+                _services.CommentService.TUpdate(comment);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                comment.Status = true;
+                _services.CommentService.TUpdate(comment);
+                return RedirectToAction("Index");
+            }
         }
     }
 }

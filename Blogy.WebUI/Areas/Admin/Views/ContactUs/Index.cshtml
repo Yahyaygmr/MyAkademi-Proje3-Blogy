@@ -1,0 +1,41 @@
+﻿@model ContactUs
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">İletişim Sayfası Statik Alan Düzenleme</h2>
+        <hr />
+        <div class="my-5">
+            <form method="post">
+                <input type="hidden" asp-for="ContactUsId" />
+                <div class="form-group mt-3">
+                    <label>Adres</label>
+                    <input type="text" class="form-control" asp-for="Location" />
+                </div>
+                <hr />
+                  <div class="form-group mt-3">
+                    <label>Açık Saatler</label>
+                    <input type="text" class="form-control" asp-for="OpenHours" />
+                </div>
+                <hr />
+                <div class="form-group mt-3">
+                    <label>Mail Adresi</label>
+                    <input type="text" class="form-control" asp-for="Email" />
+                </div>
+                <hr />
+                <div class="form-group mt-3">
+                    <label>Telefon Numarası</label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber" />
+                </div>
+                <hr />
+                <div class="form-group">
+                    <button class="btn btn-primary">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

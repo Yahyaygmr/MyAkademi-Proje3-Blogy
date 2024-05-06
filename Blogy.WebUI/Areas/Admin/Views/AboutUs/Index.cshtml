@@ -1,0 +1,46 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">UI Hakkımızda Sayfası Düzenleme</h2>
+        <hr />
+        <div class="my-5">
+            <form method="post">
+                <input type="hidden" asp-for="AboutId" />
+                <div class="form-group mt-3">
+                    <label>Text 1 Başlık</label>
+                    <input type="text" class="form-control" asp-for="Text1Title" />
+                </div>
+                <hr />
+                <div class="form-group mt-3">
+                    <label>Text 1 İçerik</label>
+                    <textarea class="form-control" asp-for="Text1Content" rows="5" cols="5"></textarea>
+                </div>
+                <hr />
+                <div class="form-group mt-3">
+                    <label>Text 2 Başlık</label>
+                    <input type="text" class="form-control" asp-for="Text2Title" />
+                </div>
+                <hr />
+                <div class="form-group mt-3">
+                    <label>Text 2 İçerik</label>
+                    <textarea class="form-control" asp-for="Text2Content" rows="5" cols="5"></textarea>
+                </div>
+                <hr />
+                <div class="form-group mt-3">
+                    <label>Footer Hakkımızda Alanı</label>
+                    <textarea class="form-control" asp-for="FooterAboutText" rows="5" cols="5"></textarea>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <button class="btn btn-primary">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
