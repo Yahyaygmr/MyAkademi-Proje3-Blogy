@@ -12,8 +12,18 @@ namespace Blogy.DataAccessLayer.EntityFramework
 {
     public class EfNotificationDal : GenericRepository<Notification>, INotificationDal
     {
+        private readonly BlogyContext _context;
         public EfNotificationDal(BlogyContext context) : base(context)
         {
+            _context = context;
+        }
+
+        public List<Notification> GetLast3Notifications()
+        {
+            return _context.Notifications
+                .OrderByDescending(x=> x.NotificationId)
+                .Take(3)
+                .ToList();
         }
     }
 }

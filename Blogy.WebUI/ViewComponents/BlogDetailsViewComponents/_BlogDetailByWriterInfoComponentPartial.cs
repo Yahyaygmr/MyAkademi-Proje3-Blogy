@@ -15,6 +15,7 @@ namespace Blogy.WebUI.ViewComponents.BlogDetailsViewComponents
         public IViewComponentResult Invoke(int id)
         {
             var value = _articleService.TGetWriterInfoByArticleWriter(id);
+
             return View(value);
         }
     }

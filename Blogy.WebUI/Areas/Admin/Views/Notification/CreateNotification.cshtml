@@ -1,0 +1,23 @@
+﻿@model Notification
+@{
+    ViewData["Title"] = "CreateNotification";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">Yeni Duyuru Oluştur</h2>
+        <hr />
+        <div class="my-5">
+            <form method="post">
+                <div class="form-group mt-3">
+                    <label>Duyuru</label>
+                    <textarea class="form-control" asp-for="Content" rows="5" cols="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">Duyuru Oluştur</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

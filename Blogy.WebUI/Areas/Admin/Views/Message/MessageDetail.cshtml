@@ -1,0 +1,19 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "MessageDatail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>@Model.Subject</h2>
+        <h6>@Model.Name </h6>
+        <hr />
+        <div class="my-5">
+            <p>@Model.MessageContent</p>
+        </div>
+        <a href="/Admin/Message/Index" class="btn btn-sm btn-danger">Mesaj Listesine Dön</a>
+    </div>
+</div>
+
+

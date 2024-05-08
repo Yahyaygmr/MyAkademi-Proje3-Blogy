@@ -9,5 +9,6 @@ namespace Blogy.DataAccessLayer.Abstaract
 {
     public interface INotificationDal : IGenericDal<Notification>
     {
+        List<Notification> GetLast3Notifications();
     }
 }

@@ -1,0 +1,28 @@
+﻿@model List<Notification>
+<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+    <i class="mdi mdi-bell-outline"></i>
+    @if (!string.IsNullOrEmpty(ViewBag.count) && ViewBag.count != "0")
+    {
+        <span class="count count-varient1">@ViewBag.count</span>
+    }
+</a>
+
+<div class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list" aria-labelledby="notificationDropdown">
+    <h6 class="p-3 mb-0">Duyurular</h6>
+    @foreach (var item in Model)
+    {
+        <a href="/Writer/Notification/Index" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+                <img src="~/images/randomuser.jpg" alt="" class="profile-pic" />
+            </div>
+            <div class="preview-item-content">
+                <p class="mb-0">
+                    Admin <span class="text-small text-muted">@item.Content</span>
+                </p>
+            </div>
+        </a>
+    }
+
+    <div class="dropdown-divider"></div>
+    <p class="p-3 mb-0">Tüm Duyuruları Görüntüle</p>
+</div>

@@ -1,0 +1,45 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body text-center">
+        <h2>Gelen Mesajlar Listesi</h2>
+        <hr />
+        <div class="my-5">
+            <div class="table-responsive table-hover">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Gönderen</th>
+                            <th>Mail</th>
+                            <th>Konu</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>@item.Subject</td>
+                                <td>
+                                    <a href="/Admin/Message/MessageDetail/@item.MessageId" class="btn btn-sm btn-primary">Detay</a>
+                                    <a href="/Admin/Message/DeleteMessage/@item.MessageId" class="btn btn-sm btn-danger">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

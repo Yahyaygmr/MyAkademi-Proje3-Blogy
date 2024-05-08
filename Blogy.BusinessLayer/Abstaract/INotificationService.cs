@@ -9,5 +9,6 @@ namespace Blogy.BusinessLayer.Abstaract
 {
     public interface INotificationService : IGenericService<Notification>
     {
+        List<Notification> TGetLast3Notifications();
     }
 }

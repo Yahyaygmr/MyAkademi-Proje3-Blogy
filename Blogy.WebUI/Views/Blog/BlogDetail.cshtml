@@ -37,7 +37,7 @@
                 </div>
                 <!-- END sidebar-box -->
                 <div class="sidebar-box">
-                    @await Component.InvokeAsync("_BlogDetailGetOtherBlogPostsByWriterComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailGetOtherBlogPostsByWriterComponentPartial", new { id = ViewBag.blogId })
                 </div>
                 <!-- END sidebar-box -->
 

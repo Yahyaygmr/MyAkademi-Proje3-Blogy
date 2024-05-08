@@ -17,7 +17,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var blogs = _services.ArticleService.TGetListAll();
+            var blogs = _services.ArticleService.TGetArticleWithWriterAndCategory();
             return View(blogs);
         }
     }
