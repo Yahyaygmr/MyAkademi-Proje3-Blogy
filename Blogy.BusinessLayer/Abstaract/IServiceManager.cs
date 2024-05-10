@@ -18,5 +18,6 @@ namespace Blogy.BusinessLayer.Abstaract
         INotificationService NotificationService { get; }
         ISocialMediaService SocialMediaService { get; }
         ITagService TagService { get; }
+        IWriterMessageService WriterMessageService { get; }
     }
 }

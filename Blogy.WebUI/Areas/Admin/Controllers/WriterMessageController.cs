@@ -1,22 +1,21 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
-using Blogy.BusinessLayer.Concrete;
 using Blogy.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Blogy.WebUI.Areas.Writer.Controllers
+namespace Blogy.WebUI.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Writer")]
-    [Area("Writer")]
-    [Route("Writer/{controller}/{action}/{id?}")]
-    public class MessageController : Controller
+    [Authorize(Roles = "Admin")]
+    [Area("Admin")]
+    [Route("Admin/{controller}/{action}/{id?}")]
+    public class WriterMessageController : Controller
     {
         private readonly IServiceManager _serviceManager;
         private readonly UserManager<AppUser> _userManager;
-
-        public MessageController(IServiceManager serviceManager, UserManager<AppUser> userManager)
+        public WriterMessageController(IServiceManager serviceManager, UserManager<AppUser> userManager)
         {
             _serviceManager = serviceManager;
             _userManager = userManager;
@@ -24,11 +23,15 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var user =await _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _serviceManager.WriterMessageService.TGetWriterMessagesByUser(user);
 
-            var messages = _serviceManager.WriterMessageService.TGetWriterMessagesByUser(user);
-
-            return View(messages);
+            return View(values);
+        }
+        public IActionResult WriterMessageDetail(int id)
+        {
+            var message = _serviceManager.WriterMessageService.TGetWriterMessagesByIdWithUser(id);
+            return View(message);
         }
         [HttpGet]
         public IActionResult SendMessage()
@@ -54,11 +57,7 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
             _serviceManager.WriterMessageService.TDelete(id);
             return RedirectToAction("Index");
         }
-        public IActionResult WriterMessageDetail(int id)
-        {
-            var message = _serviceManager.WriterMessageService.TGetWriterMessagesByIdWithUser(id);
-            return View(message);
-        }
+
         public List<SelectListItem> GetUserMails()
         {
             List<string> userMails = new List<string>();
@@ -78,5 +77,4 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
             return mails;
         }
     }
-
 }

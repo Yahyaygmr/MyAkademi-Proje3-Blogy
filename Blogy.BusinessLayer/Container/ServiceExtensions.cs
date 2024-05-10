@@ -48,6 +48,9 @@ namespace Blogy.BusinessLayer.Container
             services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
             services.AddScoped<ISocialMediaService, SocialMediaManager>();
 
+            services.AddScoped<IWriterMessageDal, EfWriterMessageDal>();
+            services.AddScoped<IWriterMessageService, WriterMessageManager>();
+
         }
     }
 }

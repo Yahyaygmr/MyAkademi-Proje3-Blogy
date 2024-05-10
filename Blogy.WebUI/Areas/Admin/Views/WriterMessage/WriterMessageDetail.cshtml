@@ -1,0 +1,41 @@
+﻿@model WriterMessage
+@{
+    ViewData["Title"] = "WriterMessageDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="media mb-3">
+            @if(string.IsNullOrEmpty(Model.AppUser.ImageUrl))
+            {
+                <img src="~/images/randomuser.jpg" class="rounded-circle mr-3 mail-img shadow" alt="media image" style="width:60px;">
+            }
+            else
+            {
+                <img src="@Model.AppUser.ImageUrl" class="rounded-circle mr-3 mail-img shadow" alt="media image" style="width:60px;">
+            }
+            
+            <div class="media-body">
+                <span class="media-meta float-right">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</span>
+                <h4 class="m-0">@Model.AppUser.Name @Model.AppUser.Surname</h4>
+                <hr />
+                <h5 style="color:darkorange;">Konu : @Model.Subject.ToUpper()</h5>
+                @*  @if (Model.AppUser.UserName == User.Identity.Name)
+                {
+                <h6>Alıcı : @Model.RecieverMail</h6>
+                }
+                else
+                {
+                <h6>Alıcı : Ben</h6>
+                } *@
+            </div>
+        </div> <!-- media -->
+        <div class="container my-5">
+            @Model.Content
+
+        </div>
+        <a href="/Admin/WriterMessage/Index/" class="btn btn-primary">Mesaj Listesine Dön</a>
+    </div>
+   
+</div>

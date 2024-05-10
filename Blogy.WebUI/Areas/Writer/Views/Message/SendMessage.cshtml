@@ -1,0 +1,53 @@
+﻿@model WriterMessage
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span style="color:cornflowerblue">Kullanıcılar Arası Mesaj Sistemi </span></h4>
+                    <p class="card-description">
+                        Mesaj Yaz
+                    </p>
+               
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Konu" asp-for="Subject" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <select class="form-control" asp-for="RecieverMail" required>
+                                    <option>Kullanıcı Seçin</option>
+                                    <option value="yahyaygmr@gmail.com">Admin</option>
+                                    @foreach (var item in ViewBag.emails)
+                                    {
+                                        <option value="@item.Text">@item.Text</option>
+                                    }
+                                </select>
+                               @*  @Html.DropDownListFor(x => x.RecieverMail, (SelectList)ViewBag.ClassRooms, new { @class = "custom-select border-0 px-4", style = "height: 47px" }) *@
+                              @*   <input type="email" class="form-control" placeholder="Alıcı Email" asp-for="RecieverMail" required> *@
+                            </div>
+                            <div class="col-12 mb-3">
+                                <textarea asp-for="Content" cols="30" rows="7" class="form-control" placeholder="Mesajınız" required></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary">Mesaj Gönder</button>
+                                <span class="m-5"> <a href="/Writer/Message/Index/" class="btn btn-danger">Mesaj Listesine Dön</a></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+               
+            </div>
+
+        </div>
+
+    </div>
+</div>

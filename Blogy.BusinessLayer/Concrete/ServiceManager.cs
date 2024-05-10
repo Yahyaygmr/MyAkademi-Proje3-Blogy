@@ -19,8 +19,9 @@ namespace Blogy.BusinessLayer.Concrete
         private readonly INotificationService _notificationService;
         private readonly ISocialMediaService _socialMediaService;
         private readonly ITagService _tagService;
+        private readonly IWriterMessageService _writerMessageService;
 
-        public ServiceManager(IAboutService aboutService, IArticleService articleService, ICategoryService categoryService, ICommentService commentService, IContactUsService contactUsService, IHelpAdminService helpAdminService, IMessageService messageService, INotificationService notificationService, ISocialMediaService socialMediaService, ITagService tagService)
+        public ServiceManager(IAboutService aboutService, IArticleService articleService, ICategoryService categoryService, ICommentService commentService, IContactUsService contactUsService, IHelpAdminService helpAdminService, IMessageService messageService, INotificationService notificationService, ISocialMediaService socialMediaService, ITagService tagService, IWriterMessageService writerMessageService)
         {
             _aboutService = aboutService;
             _articleService = articleService;
@@ -32,6 +33,7 @@ namespace Blogy.BusinessLayer.Concrete
             _notificationService = notificationService;
             _socialMediaService = socialMediaService;
             _tagService = tagService;
+            _writerMessageService = writerMessageService;
         }
 
         public IAboutService AboutService => _aboutService;
@@ -53,5 +55,7 @@ namespace Blogy.BusinessLayer.Concrete
         public ISocialMediaService SocialMediaService => _socialMediaService;
 
         public ITagService TagService => _tagService;
+
+        public IWriterMessageService WriterMessageService => _writerMessageService;
     }
 }

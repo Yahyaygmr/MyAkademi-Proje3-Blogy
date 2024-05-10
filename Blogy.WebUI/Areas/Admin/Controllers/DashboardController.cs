@@ -5,7 +5,6 @@ using System.Xml.Linq;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/{controller}/{action}/{id?}")]

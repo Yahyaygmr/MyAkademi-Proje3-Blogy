@@ -40,10 +40,10 @@ namespace Blogy.WebUI.Controllers
                     {
                         if (role == "Admin")
                         {
-							return RedirectToAction("Index", "Roles", new { area = "Admin" });
+							return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
 						}
                     }
-                    return RedirectToAction("MyBlogList", "Blog", new { area = "Writer" });
+                    return RedirectToAction("Index", "DashBoard", new { area = "Writer" });
                 }
                 else
                 {

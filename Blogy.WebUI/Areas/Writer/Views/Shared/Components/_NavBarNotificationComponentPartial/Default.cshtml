@@ -15,14 +15,16 @@
             <div class="preview-thumbnail">
                 <img src="~/images/randomuser.jpg" alt="" class="profile-pic" />
             </div>
-            <div class="preview-item-content">
-                <p class="mb-0">
-                    Admin <span class="text-small text-muted">@item.Content</span>
-                </p>
+
+            <div class="preview-item-content flex-grow">
+                <span class="badge badge-pill badge-warning">Admin</span>
+                <p class="text-small text-muted ellipsis mb-0"> @item.Content </p>
             </div>
+            <p class="text-small text-muted align-self-start"> @item.CreatedDate.ToString("HH:mm") </p>
         </a>
     }
 
     <div class="dropdown-divider"></div>
     <p class="p-3 mb-0">Tüm Duyuruları Görüntüle</p>
 </div>
+

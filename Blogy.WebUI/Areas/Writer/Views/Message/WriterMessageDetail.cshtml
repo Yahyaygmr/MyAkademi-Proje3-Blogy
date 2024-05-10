@@ -1,0 +1,57 @@
+﻿@model WriterMessage
+@{
+    ViewData["Title"] = "WriterMessageDetail";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span style="color:cornflowerblue">Kullanıcılar Arası Mesaj Sistemi </span></h4>
+                    <p class="card-description">
+                        Mesaj Detayı
+                    </p>
+
+                    <div class="media mb-3">
+                        @if (string.IsNullOrEmpty(Model.AppUser.ImageUrl))
+                        {
+                            <img src="~/images/randomuser.jpg" class="rounded-circle mr-3 mail-img shadow" alt="media image" style="width:60px;">
+                        }
+                        else
+                        {
+                            <img src="@Model.AppUser.ImageUrl" class="rounded-circle mr-3 mail-img shadow" alt="media image" style="width:60px;">
+                        }
+
+                        <div class="media-body">
+                            <span class="media-meta float-right">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</span>
+                            <h4 class="m-0">@Model.AppUser.Name @Model.AppUser.Surname</h4>
+                            <hr />
+                            <h5 style="color:darkorange;">Konu : @Model.Subject.ToUpper()</h5>
+                            @*  @if (Model.AppUser.UserName == User.Identity.Name)
+                            {
+                            <h6>Alıcı : @Model.RecieverMail</h6>
+                            }
+                            else
+                            {
+                            <h6>Alıcı : Ben</h6>
+                            } *@
+                        </div>
+                    </div> <!-- media -->
+                    <div class="container my-5">
+                        @Model.Content
+
+                    </div>
+                    <a href="/Writer/Message/Index/" class="btn btn-primary">Mesaj Listesine Dön</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

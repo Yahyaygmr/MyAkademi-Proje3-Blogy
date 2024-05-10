@@ -1,0 +1,86 @@
+﻿@model List<WriterMessage>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">Yazar Gelen Mesajlar Listesi</h2>
+        <hr />
+        <div class="my-5">
+            <div class="table-responsive table-hover">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-light">
+                            <th>#</th>
+                            <th>Konu</th>
+                            <th>Gönderen Adı</th>
+                            <th>Gönderen Mail</th>
+                            <th>Tarih</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            if (item.IsRead)
+                            {
+                                <tr>
+
+                                    <td>@count</td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link-read">@item.Subject</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link-read">@item.AppUser.Name @item.AppUser.Surname</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link-read"> @item.AppUser.Email</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link-read">  @item.SendDate.ToString("dd MMM HH:mm")</a>
+                                    </td>
+                                    <td>
+                                       @*  <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="btn btn-secondary btn-sm">Mesajı Oku</a> *@
+                                        <a href="/Admin/WriterMessage/DeleteMessage/@item.WriterMessageId" class="btn btn-danger btn-sm">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+
+                                    <td>@count</td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link">@item.Subject</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link"> @item.AppUser.Name @item.AppUser.Surname</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link"> @item.AppUser.Email</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="custom-link">  @item.SendDate.ToString("dd MMM HH:mm")</a>
+                                    </td>
+                                    <td>
+                                       @*  <a href="/Admin/WriterMessage/WriterMessageDetail/@item.WriterMessageId" class="btn btn-secondary btn-sm">Mesajı Oku</a> *@
+                                        <a href="/Admin/WriterMessage/DeleteMessage/@item.WriterMessageId" class="btn btn-danger btn-sm">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+        <a href="/Admin/WriterMessage/SendMessage/" class="btn btn-primary">+ Yeni Mesaj Oluştur</a>
+    </div>
+</div>
+
