@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
         <a class="sidebar-brand brand-logo" href="/Writer/DashBoard/Index"><img src="~/yazar/template/assets/images/log.png" alt="logo" /></a>
@@ -26,7 +27,7 @@
 
                 <div class="nav-profile-text d-flex flex-column pr-3">
                     <span class="font-weight-medium mb-2">@ViewBag.userName</span>
-                    <span class="font-weight-normal">Yazar Paneli</span>
+                    <span class="font-weight-normal">@localizer["Yazar Paneli"]</span>
                 </div>
                 <span class="badge badge-danger text-white ml-3 rounded">@ViewBag.blogCount</span>
             </a>
@@ -34,55 +35,55 @@
         <li class="nav-item">
             <a class="nav-link" href="/Writer/DashBoard/Index">
                 <i class="mdi mdi-home menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">@localizer["Dashboard"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Blog/MyBlogList">
                 <i class="mdi menu-icon mdi-equal-box"></i>
-                <span class="menu-title">Bloglarım</span>
+                <span class="menu-title">@localizer["Bloglarım"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Message/Index">
                 <i class="mdi menu-icon mdi-comment-multiple-outline"></i>
-                <span class="menu-title">Mesajlar</span>
+                <span class="menu-title">@localizer["Mesajlar"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Writer/HelpAdmin/Index">
                 <i class="mdi menu-icon mdi-auto-fix"></i>
-                <span class="menu-title">Destek</span>
+                <span class="menu-title">@localizer["Admin Destek"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Notification/Index">
                 <i class="mdi menu-icon mdi-bell-outline"></i>
-                <span class="menu-title">Duyurular</span>
+                <span class="menu-title">@localizer["Duyurular"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Statistic/Index">
                 <i class="mdi menu-icon mdi-chart-bar"></i>
-                <span class="menu-title">İstatistikler</span>
+                <span class="menu-title">@localizer["İstatistikler"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Profile/Index">
                 <i class="mdi menu-icon mdi-wrench"></i>
-                <span class="menu-title">Profil Ayarları</span>
+                <span class="menu-title">@localizer["Profil Ayarları"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Blog/BlogList/" target="_blank">
                 <i class="mdi menu-icon mdi-cursor-default"></i>
-                <span class="menu-title">Siteye Git</span>
+                <span class="menu-title">@localizer["Siteye Git"]</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Login/LogOut/">
                 <i class="mdi menu-icon mdi-page-last"></i>
-                <span class="menu-title">Çıkış Yap</span>
+                <span class="menu-title">@localizer["Çıkış Yap"]</span>
             </a>
         </li>
     </ul>

@@ -10,7 +10,10 @@ using Blogy.WebUI.Models;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +21,43 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<BlogyContext>()
     .AddErrorDescriber<CustomIdentityValidator>();
+
 builder.Services.AddHttpClient();
+builder.Services.AddDbContext<BlogyContext>();
+builder.Services.ContainerDependencies();
+builder.Services.AddControllersWithViews();
+
+//Localization start
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+builder.Services.AddMvc()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
+builder.Services.Configure<RequestLocalizationOptions>(opt =>
+{
+    var supportedCultures = new List<CultureInfo>
+    {
+        new CultureInfo("en-US"),
+        new CultureInfo("tr-TR"),
+        new CultureInfo("fr-FR"),
+        new CultureInfo("de-DE"),
+        new CultureInfo("es-ES")
+    };
+    opt.DefaultRequestCulture = new RequestCulture("tr-TR");
+    opt.SupportedCultures = supportedCultures;
+    opt.SupportedUICultures = supportedCultures;
+
+    opt.RequestCultureProviders = new List<IRequestCultureProvider>
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    };
+
+});
+//Localization end
 
 builder.Services.AddMvc(config =>
 {
@@ -41,9 +80,7 @@ builder.Services.ConfigureApplicationCookie(opt =>
     opt.AccessDeniedPath = "/ErrorPage/Page403/";
 });
 
-builder.Services.AddDbContext<BlogyContext>();
-builder.Services.ContainerDependencies();
-builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
@@ -62,6 +99,12 @@ app.UseStatusCodePagesWithRedirects("/ErrorPage/Page404/");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+//Localization start
+var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+app.UseRequestLocalization(options.Value);
+
+//Localization end
 
 app.MapControllerRoute(
     name: "default",

@@ -21,6 +21,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Writer\Data\" />
+    <Folder Include="Resources\Areas\Writer\Controllers\" />
   </ItemGroup>
 
 </Project>
