@@ -32,9 +32,7 @@ builder.Services.AddLocalization(opt =>
 {
     opt.ResourcesPath = "Resources";
 });
-builder.Services.AddMvc()
-    .AddViewLocalization()
-    .AddDataAnnotationsLocalization();
+builder.Services.AddMvc().AddViewLocalization();
 builder.Services.Configure<RequestLocalizationOptions>(opt =>
 {
     var supportedCultures = new List<CultureInfo>
