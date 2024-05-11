@@ -33,6 +33,20 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             var message = _serviceManager.WriterMessageService.TGetWriterMessagesByIdWithUser(id);
             return View(message);
         }
+        public IActionResult MessageControl(int id)
+        {
+            var message = _serviceManager.WriterMessageService.TGetById(id);
+            if (message.IsRead)
+            {
+                return RedirectToAction("WriterMessageDetail", new { id = message.WriterMessageId });
+            }
+            else
+            {
+                message.IsRead = true;
+                _serviceManager.WriterMessageService.TUpdate(message);
+                return RedirectToAction("WriterMessageDetail", new { id = message.WriterMessageId });
+            }
+        }
         [HttpGet]
         public IActionResult SendMessage()
         {
