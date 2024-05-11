@@ -1,4 +1,5 @@
 ﻿using Blogy.BusinessLayer.Abstaract;
+using Blogy.DataAccessLayer.Abstaract;
 using Blogy.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,34 +12,41 @@ namespace Blogy.BusinessLayer.Concrete
 {
     public class SocialMediaManager : ISocialMediaService
     {
+        private readonly ISocialMediaDal _socialMediaDal;
+
+        public SocialMediaManager(ISocialMediaDal socialMediaDal)
+        {
+            _socialMediaDal = socialMediaDal;
+        }
+
         public DbSet<SocialMedia> GetTContext()
         {
-            throw new NotImplementedException();
+            return _socialMediaDal.GetTContext();
         }
 
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _socialMediaDal.Delete(id);
         }
 
         public SocialMedia TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _socialMediaDal.GetById(id);
         }
 
         public List<SocialMedia> TGetListAll()
         {
-            throw new NotImplementedException();
+            return _socialMediaDal.GetListAll();
         }
 
         public void TInsert(SocialMedia entity)
         {
-            throw new NotImplementedException();
+            _socialMediaDal.Insert(entity);
         }
 
         public void TUpdate(SocialMedia entity)
         {
-            throw new NotImplementedException();
+            _socialMediaDal.Update(entity);
         }
     }
 }
