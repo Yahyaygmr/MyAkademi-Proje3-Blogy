@@ -48,66 +48,18 @@
 <div class="row mx-auto">
     <div class="row">
         <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-secondary">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="text-black">
-                            <p class="mb-0 color-card-head">Toplam Blog Sayısı</p>
-                            <h2 class="text-black">
-                                // @ViewBag.blogCount
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-secondary"></i>
-                    </div>
-                    <h6 class="text-black">Sistemde bulunan bütün blogların toplam sayısı.</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-primary">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">En Çok Blog Yazılan Kategori</p>
-                            <h2 class="text-white">
-                                // @ViewBag.mostUsedCategoy
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-primary"></i>
-                    </div>
-                    <h6 class="text-white">Sistemde bulunan bloglar içerisinde en çok tercih edilen kategori.</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-            <div class="card bg-success">
-                <div class="card-body px-3 py-4">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="color-card">
-                            <p class="mb-0 color-card-head">Son Bloğun Tarihi</p>
-                            <h2 class="text-white">
-                            </h2>
-                        </div>
-                        <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-success"></i>
-                    </div>
-                    <h6 class="text-white">Yazmış olduğum son blogun tarihi.</h6>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
             <div class="card bg-danger">
                 <div class="card-body px-3 py-4">
                     <div class="d-flex justify-content-between align-items-start">
                         <div class="text-black">
-                            <p class="mb-0 color-card-head">Toplam Blog Sayısı</p>
+                            <p class="mb-0 color-card-head">Sistemde Bulunan Toplam Kategori Sayısı</p>
                             <h2 class="text-black">
-                                // @ViewBag.blogCount
+                                @ViewBag.blogCount
                             </h2>
                         </div>
                         <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-danger"></i>
                     </div>
-                    <h6 class="text-black">Sistemde bulunan bütün blogların toplam sayısı.</h6>
+                    <h6 class="text-black">Sistemde bulunan kategorilerin toplam sayısı.</h6>
                 </div>
             </div>
         </div>
@@ -118,12 +70,12 @@
                         <div class="color-card">
                             <p class="mb-0 color-card-head">En Çok Blog Yazılan Kategori</p>
                             <h2 class="text-white">
-                                // @ViewBag.mostUsedCategoy
+                              @ViewBag.mostUsedCategoy
                             </h2>
                         </div>
                         <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-warning"></i>
                     </div>
-                    <h6 class="text-white">Sistemde bulunan bloglar içerisinde en çok tercih edilen kategori.</h6>
+                    <h6 class="text-white">Yazarların blog oluştururken en çok tercih ettiği kategorinin adı.</h6>
                 </div>
             </div>
         </div>
@@ -132,17 +84,20 @@
                 <div class="card-body px-3 py-4">
                     <div class="d-flex justify-content-between align-items-start">
                         <div class="color-card">
-                            <p class="mb-0 color-card-head">Son Bloğun Tarihi</p>
+                            <p class="mb-0 color-card-head">En Son Oluşturulan Kategori</p>
                             <h2 class="text-white">
+                                @ViewBag.lastCreatedCategory
                             </h2>
                         </div>
                         <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-info"></i>
                     </div>
-                    <h6 class="text-white">Yazmış olduğum son blogun tarihi.</h6>
+                    <h6 class="text-white">Admin tarafından en son oluşturulan kategorinin adı.</h6>
                 </div>
             </div>
         </div>
 
+
+ 
     </div>
 
     <div class="col-lg-12 grid-margin stretch-card">
@@ -158,6 +113,171 @@
             </div>
 
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-warning">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="text-black">
+                            <p class="mb-0 color-card-head">Toplam Yazar Sayısı</p>
+                            <h2 class="text-black">
+                                @ViewBag.writerCount
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
+                    </div>
+                    <h6 class="text-black">Sistemde bulunan yazarların toplam sayısı.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-primary">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">Duyuru Sayısı</p>
+                            <h2 class="text-white">
+                                @ViewBag.notificationCount
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-primary"></i>
+                    </div>
+                    <h6 class="text-white">Admin tarafında yayınlanmış olan duyuruların toplam sayısı.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-success">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">Yayınlanan Son Duyuru</p>
+                            <h3 class="text-white">
+                                @ViewBag.lastNotification
+                            </h3>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-success"></i>
+                    </div>
+                    <h6 class="text-white">Admin tarafından yayınlanmış olan son duyuru.</h6>
+                </div>
+            </div>
+        </div>
+       
+
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-secondary">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="text-black">
+                            <p class="mb-0 color-card-head">Toplam Blog Sayısı</p>
+                            <h2 class="text-black">
+                                @ViewBag.blogCount
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-secondary"></i>
+                    </div>
+                    <h6 class="text-black">Sistemde bulunan bütün blogların toplam sayısı.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-danger">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">En Çok Blog Yazılan Kategori</p>
+                            <h2 class="text-white">
+                                @ViewBag.mostUsedCategoy
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
+                    </div>
+                    <h6 class="text-white">Sistemde bulunan bloglar içerisinde en çok tercih edilen kategori.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-primary">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">Son Bloğun Tarihi</p>
+                            <h2 class="text-white">
+                                @if (string.IsNullOrEmpty(ViewBag.myLastBlogDate))
+                                {
+                                    <p>Henüz blog yazmadınız.</p>
+                                }
+                                else
+                                {
+                                    <p>@ViewBag.myLastBlogDate</p>
+                                }
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
+                    </div>
+                    <h6 class="text-white">Yazmış olduğum son blogun tarihi.</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-danger">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">Blog Sayısı</p>
+                            <h2 class="text-white">
+                                @ViewBag.myBlogsCount
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-danger"></i>
+                    </div>
+                    <h6 class="text-white">Yazmış olduğum blogların toplam sayısı.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-success">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">Yapılan Yorum Sayısı</p>
+                            <h2 class="text-white"> @ViewBag.commentCount</h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
+                    </div>
+                    <h6 class="text-white">Sistemde bulunan tüm bloglara yapılmış olan toplam yorum sayısı.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
+            <div class="card bg-warning">
+                <div class="card-body px-3 py-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="color-card">
+                            <p class="mb-0 color-card-head">Yazdığım Son Blog</p>
+                            <h2 class="text-white">
+                                @if (string.IsNullOrEmpty(ViewBag.myLastBlogName))
+                                {
+
+                                    <p>Henüz blog yazmadınız.</p>
+                                }
+                                else
+                                {
+                                    <p>@ViewBag.myLastBlogName</p>
+                                }
+                            </h2>
+                        </div>
+                        <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-warning"></i>
+                    </div>
+                    <h6 class="text-white">Yazmış olduğum son blogun başlığı.</h6>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 

@@ -57,57 +57,56 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
 
 
 
-            //        #region WeatherApi1
-            //        var client = _httpClientFactory.CreateClient();
-            //        var request = new HttpRequestMessage
-            //        {
-            //            Method = HttpMethod.Get,
-            //            RequestUri = new Uri("https://yahoo-weather5.p.rapidapi.com/weather?location=istanbul&format=json&u=c"),
-            //            Headers =
-            //{
-            //    { "X-RapidAPI-Key", "38c011d3demsh877633ef4ae234ap1fae70jsn5f63793d31a2" },
-            //    { "X-RapidAPI-Host", "yahoo-weather5.p.rapidapi.com" },
-            //},
-            //        };
-            //        using (var response5 = await client.SendAsync(request))
-            //        {
-            //            response5.EnsureSuccessStatusCode();
-            //            var body = await response5.Content.ReadAsStringAsync();
-            //            var value = JsonConvert.DeserializeObject<WeatherApiViewModel>(body);
+            #region WeatherApi1
+            var client = _httpClientFactory.CreateClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://yahoo-weather5.p.rapidapi.com/weather?location=istanbul&format=json&u=c"),
+                Headers =
+            {
+                { "X-RapidAPI-Key", "38c011d3demsh877633ef4ae234ap1fae70jsn5f63793d31a2" },
+                { "X-RapidAPI-Host", "yahoo-weather5.p.rapidapi.com" },
+            },
+            };
+            using (var response5 = await client.SendAsync(request))
+            {
+                response5.EnsureSuccessStatusCode();
+                var body = await response5.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<WeatherApiViewModel>(body);
 
-            //            #endregion
-            //            #region WeatherApi2
-            //            string apiKey = "270ee2e1d2e397c5b0fd607ec6b1b5ca";
-            //            string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + apiKey;
-            //            XDocument document = XDocument.Load(connection);
-            //            var response = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
-            //            var response1 = document.Descendants("clouds").ElementAt(0).Attribute("name").Value;
-            //            var response2 = document.Descendants("city").ElementAt(0).Attribute("name").Value;
+                #endregion
+                #region WeatherApi2
+                string apiKey = "270ee2e1d2e397c5b0fd607ec6b1b5ca";
+                string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + apiKey;
+                XDocument document = XDocument.Load(connection);
+                var response = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
+                var response1 = document.Descendants("clouds").ElementAt(0).Attribute("name").Value;
+                var response2 = document.Descendants("city").ElementAt(0).Attribute("name").Value;
 
-            //            // API'den gelen tarih/saat dizgesi
-            //            string lastUpdateString = document.Descendants("lastupdate").ElementAt(0).Attribute("value").Value;
-            //            // Tarih/saat dizesini DateTime nesnesine dönüştürme
-            //            DateTime lastUpdate = DateTime.Parse(lastUpdateString);
+                // API'den gelen tarih/saat dizgesi
+                string lastUpdateString = document.Descendants("lastupdate").ElementAt(0).Attribute("value").Value;
+                // Tarih/saat dizesini DateTime nesnesine dönüştürme
+                DateTime lastUpdate = DateTime.Parse(lastUpdateString);
 
-            //            // String'i ondalık sayıya dönüştür
-            //            double temperature = double.Parse(response.Replace(".", ","));
+                // String'i ondalık sayıya dönüştür
+                double temperature = double.Parse(response.Replace(".", ","));
 
-            //            // Ondalık sayıyı tamsayıya dönüştür
-            //            int roundedTemperature = (int)Math.Round(temperature, MidpointRounding.AwayFromZero);
+                // Ondalık sayıyı tamsayıya dönüştür
+                int roundedTemperature = (int)Math.Round(temperature, MidpointRounding.AwayFromZero);
 
-            //            ViewBag.tempreture = roundedTemperature;
+                ViewBag.tempreture = roundedTemperature;
 
-            //            TextInfo textInfo = new CultureInfo("tr-TR", false).TextInfo;
-            //            string response1Result = textInfo.ToTitleCase(response1);
-            //            ViewBag.clouds = response1Result;
+                TextInfo textInfo = new CultureInfo("tr-TR", false).TextInfo;
+                string response1Result = textInfo.ToTitleCase(response1);
+                ViewBag.clouds = response1Result;
 
-            //            ViewBag.lastUpdateDate = lastUpdate.ToString("dd MMM yyyy");
-            //            ViewBag.lastUpdateTime = lastUpdate.ToString("HH:mm");
-            //            ViewBag.cityName = response2;
-            //            #endregion
-            //            return View(value);
-            //        }
-            return View();
+                ViewBag.lastUpdateDate = lastUpdate.ToString("dd MMM yyyy");
+                ViewBag.lastUpdateTime = lastUpdate.ToString("HH:mm");
+                ViewBag.cityName = response2;
+                #endregion
+                return View(value);
+            }
         }
     }
 }

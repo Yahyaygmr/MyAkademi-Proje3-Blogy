@@ -6,7 +6,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xl-8 grid-margin stretch-card">
+
+       @*  <div class="col-xl-8 grid-margin stretch-card">
             <div class="card card-calender">
                 <div class="card-body">
                     <div class="row pt-4">
@@ -71,8 +72,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        @*  <div class="col-xl-8 grid-margin stretch-card">
+        </div> *@
+
+       <div class="col-xl-8 grid-margin stretch-card">
         <div class="card card-calender">
         <div class="card-body">
         <div class="row pt-4">
@@ -203,7 +205,7 @@
         </div>
         </div>
         </div>
-        </div> *@
+        </div>
         <div class="col-xl-4 grid-margin stretch-card">
             <div class="row">
                 <div class="col-xl-12 col-md-12 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
@@ -304,11 +306,11 @@
                             <h2 class="text-white">
                                 @if (string.IsNullOrEmpty(ViewBag.myLastBlogDate))
                                 {
-                                    <p>Henüz blog yazmadınız.</p>
+                                    <h3>Henüz blog yazmadınız.</h3>
                                 }
                                 else
                                 {
-                                    <p>@ViewBag.myLastBlogDate</p>
+                                    <h2>@ViewBag.myLastBlogDate</h2>
                                 }
                             </h2>
                         </div>
