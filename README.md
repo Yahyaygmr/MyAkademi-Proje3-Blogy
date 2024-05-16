@@ -51,7 +51,7 @@ Asp .Net Core 6.0 ile hazırladığım broje admin ve yazar panelli bir blog sit
 ----------
 
 ### Veritabanı
--------------
+![Ekran görüntüsü 2024-05-16 120120](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/a74b7f30-deea-40b1-9c88-9bffb3f693f0)
 ### UI
 ![Ekran görüntüsü 2024-05-16 104735](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/1295e38f-140f-4de4-8396-77902c10d14f)
 ![Ekran görüntüsü 2024-05-16 104813](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/aa0c1091-832d-4a6d-8dd6-192cd0af7841)
@@ -80,4 +80,8 @@ Asp .Net Core 6.0 ile hazırladığım broje admin ve yazar panelli bir blog sit
 ![Ekran görüntüsü 2024-05-16 105115](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/19489c33-0811-4b35-bd71-04ba736e821d)
 ![Ekran görüntüsü 2024-05-16 105644](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/51107389-5df7-4b06-893c-bd201c8c039a)
 ![Ekran görüntüsü 2024-05-16 105703](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/24ae2032-059b-4328-8e55-cb6a9c9ad814)
+
+### Hata Sayfaları
+![Ekran görüntüsü 2024-05-16 105759](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/f78e826e-92b1-4285-9e44-f8f2e5be36fc)
+![Ekran görüntüsü 2024-05-16 105835](https://github.com/Yahyaygmr/Proje3-Blogy/assets/101245826/57b8be84-c6df-4706-b2e3-70e9af8b0254)
 
